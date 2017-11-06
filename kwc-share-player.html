@@ -121,8 +121,8 @@ Custom property | Description | Default
                         return;
                     }
                     //Force art player until we solve the app player issue.
-                    // player = 'art';
-                    player = appMapping[share.app] || 'default';
+                    player = 'art';
+                    //player = appMapping[share.app] || 'default';
 
                     if (loadedImports[player]) {
                         this.set('_player', player);
