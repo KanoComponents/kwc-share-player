@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>kwc-share-player demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../kwc-style/typography.html">
+    <link rel="import" href="../../kwc-style/color.html">
+    <link rel="import" href="../kwc-share-player.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+
+        .player {
+            width: 730px;
+            max-width: 730px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="vertical-section-container centered player">
+        <h3>Share player default shares</h3>
+        <demo-snippet class="">
+            <template>
+                <kwc-share-player id="share"></kwc-share-player>
+                <script>
+                    document.addEventListener('WebComponentsReady', function () {
+                        const view = document.getElementById('share');
+                        view.share = shareData;
+                    });
+                    const shareData = {
+                            "id": "595a6c169f797577bd72bd70",
+                            "app": "make-apps",
+                            "slug": "mr-jump-man_1",
+                            "hardware": [
+                                {
+                                    "product": "lightboard"
+                                }
+                            ],
+                            "cover_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/covers/595a6c169f797577bd72bd70.png",
+                            "attachment_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/attachments/595a6c169f797577bd72bd70.html",
+                            "workspace_info_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/workspace-info/595a6c169f797577bd72bd70.json"
+                        }
+
+                </script>
+            </template>
+        </demo-snippet>
+</body>
+
+</html>

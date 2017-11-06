@@ -1,0 +1,145 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../lazy-imports/lazy-imports-behavior.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../lazy-imports/lazy-imports-behavior.html">
+
+<!--
+`kwc-share-player`
+Component that will select the appropriate share player for a given share.
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--kwc-share-player-height` | Height for the element | `480px`
+
+@demo demo/index-share.html
+-->
+
+<dom-module id="kwc-share-player">
+    <link rel="lazy-import" href="kwc-app-player.html" group="app">
+    <link rel="lazy-import" href="kwc-art-player.html" group="art">
+    <link rel="lazy-import" href="kwc-music-player.html" group="music">
+    <link rel="lazy-import" href="kwc-player.html" group="default">
+    <template>
+        <style>
+            :host {
+                display: block;
+                width: 100%;
+                @apply --layout-flex;
+                background: var(--kw-share-detail-share-background, --color-chateau);
+                padding: 0px 16px;
+                min-height: var(--kwc-share-player-height, 480px);
+                height: var(--kwc-share-player-height, 480px);
+                box-sizing: border-box;
+                position: relative;
+            }
+            #share-container>* {
+                background-color: transparent;
+                height: 100%;
+                margin: 20px auto;
+                max-width: 600px;
+                width: 100%;
+                @apply --layout-fit;
+                animation: fade-in 200ms linear;
+            }
+            @media all and (max-width: 680px) {
+                #share-container>* {
+                    max-height: calc(100% - 120px);
+                    padding: 0 20px;
+                }
+            }
+            @media all and (min-width: 681px) {
+                #share-container>* {
+                    max-height: calc(100% - 40px);
+                }
+            }
+            :host([tombstone]) {
+                opacity: 0.3;
+            }
+        </style>
+        <div id="share-container">
+            <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
+                <kwc-app-player share="[[share]]"
+                                display-code="{{displayCode}}">
+                                </kwc-app-player>
+            </template>
+            <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
+                <kwc-art-player share="[[share]]"
+                                display-code="{{displayCode}}">
+                                </kwc-art-player>
+            </template>
+            <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp>
+                <h1> MUSIC </h1>
+            </template>
+            <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp>
+                <kwc-player share="[[share]]"></kwc-player>
+            </template>
+
+        </div>
+    </template>
+
+    <script>
+        (function(){
+            const appMapping = {
+                'make-music': 'music',
+                'kano-draw' : 'art',
+                'make-apps' : 'app',
+                'lightboard': 'app'
+            },
+            loadedImports = {"music": true};
+
+            Polymer({
+
+                is: 'kwc-share-player',
+                behaviors: [
+                    Polymer.LazyImportsBehavior
+                ],
+                properties: {
+                    displayCode: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    },
+                    share: {
+                        type: Object,
+                        value: () => {
+                            return {}
+                        }
+                    },
+                    _player: {
+                        type: String,
+                        value: ""
+                    }
+                },
+                observers: [
+                    '_shareChanged(share.*)'
+                ],
+                _shareChanged(shareChange) {
+                    const share = shareChange.base;
+                    let player;
+
+                    if (!Object.keys(share).length) {
+                        return;
+                    }
+                    //Force art player until we solve the app player issue.
+                    // player = 'art';
+                    player = appMapping[share.app] || 'default';
+
+                    if (loadedImports[player]) {
+                        this.set('_player', player);
+                    } else {
+                        this.async(() => {
+                            this.importLazyGroup(player).then(() => {
+                                loadedImports[player] = true;
+                                this.set('_player', player);
+                            });
+                        });
+                    }
+                },
+                _usePlayer(key, player) {
+                    return key === player;
+                }
+
+            });
+        })();
+    </script>
+</dom-module>

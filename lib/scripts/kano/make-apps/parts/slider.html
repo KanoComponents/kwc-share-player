@@ -1,0 +1,51 @@
+<link rel="import" href="./parts.html">
+<link rel="import" href="./ui.html">
+<script>
+    (function (Kano) {
+
+        let slider = {
+            partType: 'ui',
+            type: 'slider',
+            label: Kano.MakeApps.Msg.PART_SLIDER_NAME,
+            image: 'https://apps.kano.me/assets/part/slider.svg',
+            component: 'kano-part-slider',
+            customizable: {
+                properties: [{
+                    key: 'min',
+                    type: 'range',
+                    label: Kano.MakeApps.Msg.MIN
+                },{
+                    key: 'max',
+                    type: 'range',
+                    label: Kano.MakeApps.Msg.MAX
+                }],
+                style: []
+            },
+            userProperties: {
+                min: 0,
+                max: 100
+            },
+            events: [{
+                label: Kano.MakeApps.Msg.CHANGED,
+                id: 'update'
+            }],
+            blocks: [{
+                block: (ui) => {
+                    return {
+                        id: 'get_value',
+                        message0: `${ui.name}: ${Blockly.Msg.BLOCK_VALUE}`,
+                        output: 'Number'
+                    };
+                },
+                javascript: (ui) => {
+                    return function (block) {
+                        return [`devices.get('${ui.id}').getValue()`];
+                    };
+                }
+            }]
+        };
+
+
+        Kano.MakeApps.Parts.registerPart(slider);
+    })(window.Kano = window.Kano || {});
+</script>

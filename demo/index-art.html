@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <title>kwc-art-player demo</title>
+
+        <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+        <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+        <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+        <link rel="import" href="../../paper-button/paper-button.html">
+        <link rel="import" href="../../kwc-style/typography.html">
+        <link rel="import" href="../../kwc-style/button.html">
+        <link rel="import" href="../kwc-share-player.html">
+
+        <style is="custom-style" include="demo-pages-shared-styles">
+            kwc-share-player {
+                --kwc-share-player-height: 500px;
+            }
+            #toggle {
+                @apply --kano-button;
+                color: black;
+                position: relative;
+                bottom: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script>
+            const shareData = {
+                id: "59dfbdc78276043dd9510cc9",
+                app: "kano-draw",
+                cover_url: "https://s3-eu-west-1.amazonaws.com/world.kano.me/share-items/covers/59dfbdc78276043dd9510cc9.png",
+                attachment_url: "https://s3-eu-west-1.amazonaws.com/world.kano.me/share-items/attachments/59dfbdc78276043dd9510cc9.draw"
+            }
+        </script>
+        <div class="vertical-section-container">
+            <h3>Share player for make art shares</h3>
+            <demo-snippet>
+                <template>
+                    <paper-button id="toggle">Show code</paper-button>
+                    <kwc-share-player id="share"></kwc-share-player>
+                    <script>
+                        document.addEventListener('WebComponentsReady', function () {
+                            const view = document.getElementById('share'),
+                                  button = document.getElementById('toggle');
+
+                            view.share = shareData;
+                            button.addEventListener('click', () => {
+                                view.displayCode = !view.displayCode;
+                            });
+                            document.onkeydown = function(evt) {
+                                evt = evt || window.event;
+                                let isEscape = (evt.key == "Escape" || evt.key == "Esc");
+                                if (isEscape) {
+                                    view.displayCode = false;
+                                }
+                            }.bind(this);
+                        });
+                    </script>
+                </template>
+            </demo-snippet>
+    </body>
+
+</html>
