@@ -11,6 +11,8 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-button/paper-button.html">
+    <link rel="import" href="../../kwc-style/button.html">
     <link rel="import" href="../../kwc-style/typography.html">
     <link rel="import" href="../../kwc-style/color.html">
     <link rel="import" href="../kwc-share-player.html">
@@ -21,6 +23,12 @@
             width: 730px;
             max-width: 730px;
         }
+        #toggle {
+            @apply --kano-button;
+            color: black;
+            position: relative;
+            bottom: 5px;
+        }
     </style>
 </head>
 
@@ -29,11 +37,23 @@
         <h3>Share player default shares</h3>
         <demo-snippet class="">
             <template>
+                <paper-button id="toggle">Show code</paper-button>
                 <kwc-share-player id="share"></kwc-share-player>
                 <script>
                     document.addEventListener('WebComponentsReady', function () {
-                        const view = document.getElementById('share');
+                        const view = document.getElementById('share'),
+                              button = document.getElementById('toggle');
                         view.share = shareData;
+                        button.addEventListener('click', () => {
+                                view.displayCode = !view.displayCode;
+                            });
+                        document.onkeydown = function(evt) {
+                            evt = evt || window.event;
+                            let isEscape = (evt.key == "Escape" || evt.key == "Esc");
+                            if (isEscape) {
+                                view.displayCode = false;
+                            }
+                        }.bind(this);
                     });
                     const shareData = {
                             "id": "595a6c169f797577bd72bd70",

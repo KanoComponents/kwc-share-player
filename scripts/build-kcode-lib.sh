@@ -3,8 +3,7 @@ pushd "$(dirname ${BASH_SOURCE[0]})"
 
 rm -rf ../lib
 mkdir -p ../lib
-mkdir -p ../assets
-pushd ../bower_components/kano-code/app
+pushd ../kano-code/app
 tar -cvf lib.tar \
     elements/kano-animated-svg elements/kano-app-player-toolbar \
     elements/kano-app-player elements/behaviors/kano-workspace-behavior.html \
@@ -21,7 +20,7 @@ tar -cvf lib.tar \
     scripts/kano/make-apps/text-to-speech.js
 
 popd
-mv ../bower_components/kano-code/app/lib.tar ../lib
+mv ../kano-code/app/lib.tar ../lib
 pushd ../lib
 tar xvf lib.tar
 rm lib.tar
