@@ -26,7 +26,7 @@ tar xvf lib.tar
 rm lib.tar
 grep -rli 'bower_components' * | xargs -I@ sed -i 's/bower_components/..\/../g' @
 grep -rli "'/assets/" * | xargs -I@ sed -i "s/'\/assets\//'https:\/\/apps.kano.me\/assets\//g" @
-grep -rli "/assets/mode/lightboard/body.svg" * | xargs -I@ sed -i "s/\/assets\//https:\/\/apps.kano.me\/assets\//g" @
+grep -rli '"/assets/mode/lightboard/body.svg' * | xargs -I@ sed -i 's/"\/assets\//"https:\/\/apps.kano.me\/assets\//g' @
 popd
 mkdir -p ../lib/scripts/config
 cp ./files/web.staging.html ./files/web.html ./files/staging.cnf.html ../lib/scripts/config
