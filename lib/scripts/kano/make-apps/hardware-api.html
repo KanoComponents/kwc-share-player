@@ -494,11 +494,15 @@
         class HardwareAPI extends EventEmitter {
             constructor (config) {
                 super();
+                if (config.USE_HARDWARE_API) {
+                    this._debouncers = {};
 
-                this._debouncers = {};
-
-                if (config) {
-                    this.config(config);
+                    if (config) {
+                        this.config(config);
+                    }
+                } else {
+                    //To support the share generated code.
+                    return {setParts: function(){return;}};
                 }
             }
 

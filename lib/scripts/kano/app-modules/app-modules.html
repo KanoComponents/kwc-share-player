@@ -67,26 +67,26 @@
 
                 component = `
                     <dom-module id="kano-${componentName}">
-                        <style>
-                            :host {
-                                position: relative;
-                            }
-                            kano-ui-viewport {
-                                position: absolute;
-                                top: 0px;
-                                left: 0px;
-                                width: 100%;
-                                height: 100%;
-                            }
-                            kano-ui-viewport * {
-                                position: absolute;
-                            }
-                            .workspace {
-                                width: 100%;
-                                height: 100%;
-                            }
-                        </style>
                         <template>
+                            <style>
+                                :host {
+                                    position: relative;
+                                }
+                                kano-ui-viewport {
+                                    position: absolute;
+                                    top: 0px;
+                                    left: 0px;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                                kano-ui-viewport * {
+                                    position: absolute;
+                                }
+                                .workspace {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            </style>
                             <kano-ui-viewport mode="scaled"
                                         view-width="${mode.workspace.viewport.width}"
                                         view-height="${mode.workspace.viewport.height}"
@@ -108,7 +108,9 @@
                                 attached () {
                                     var hwAPI = new Kano.MakeApps.HardwareAPI(Kano.MakeApps.config),
                                         self = this;
-                                    hwAPI.setParts(Object.keys(this.parts).map(id => this.parts[id]));
+                                    if (hwAPI.setParts){
+                                        hwAPI.setParts(Object.keys(this.parts).map(id => this.parts[id]));
+                                    }
                                     this.hwAPI = hwAPI;
                                     this.workspace = this.$['${mode.id}'];
                                     this.appModules = Kano.AppModules.createStandalone();

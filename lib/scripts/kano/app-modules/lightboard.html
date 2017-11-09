@@ -2,9 +2,19 @@
 <link rel="import" href="../pixel-font.html">
 <script>
     (function (Kano) {
+        const GUARD_LIST = [
+            '_getAllLightboards:Array',
+            'drawLights',
+            '_getVolume',
+            '_on',
+            '_removeAllListeners',
+            '_removeListener'
+        ];
         class LightboardModule extends Kano.AppModules.AppModule {
             constructor () {
                 super();
+                super.guardMethods(this.__proto__, GUARD_LIST);
+
                 this.backgroundColor = '#000000';
                 this.lights = new Array(128);
                 this.shapes = {};

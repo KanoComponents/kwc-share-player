@@ -1,10 +1,21 @@
 <link rel="import" href="./app-module.html">
 <script>
     (function (Kano) {
-
+        const GUARD_LIST = [
+            '_flash',
+            '_on',
+            '_onPictureTaken:callback',
+            '_takePicture:String',
+            '_lastPicture:String',
+            '_getPicture:String',
+            '_connect',
+            '_removeAllListeners',
+            '_removeListener'
+        ];
         class CameraModule extends Kano.AppModules.AppModule {
             constructor () {
                 super();
+                super.guardMethods(this.__proto__, GUARD_LIST);
 
                 this.addMethod('flash', '_flash');
                 this.addMethod('on', '_on');
