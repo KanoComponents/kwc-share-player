@@ -8,7 +8,6 @@
         "gif.js": "^0.1.6",
         "google-map": "GoogleWebComponents/google-map#^1.1.10",        
         "iron-image": "^2.1.2",
-        "iron-icon": "PolymerElements/iron-icon#^2.0.1",
         "iron-signals": "PolymerElements/iron-signals#^1.0.3",
         "kwc-style": "git@github.com:KanoComponents/kwc-style#v1.x",
         "kwc-icons": "git@github.com:KanoComponents/kwc-icons#v1.x",

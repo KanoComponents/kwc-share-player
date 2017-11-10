@@ -41,6 +41,9 @@ Custom property | Description | Default
                 @apply --layout-fit;
                 animation: fade-in 200ms linear;
             }
+            kwc-app-player {
+                --kwc-app-player-height: var(--kwc-share-player-height, 480px)
+            }
             @media all and (max-width: 680px) {
                 #share-container>* {
                     max-height: calc(100% - 120px);
@@ -59,8 +62,10 @@ Custom property | Description | Default
         <div id="share-container">
             <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
                 <kwc-app-player share="[[share]]"
-                                display-code="{{displayCode}}">
-                                </kwc-app-player>
+                                display-code="{{displayCode}}"
+                                on-hide-code="_hideCode">
+                    <slot slot="hardware" name="hardware-list"></slot>
+                </kwc-app-player>
             </template>
             <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
                 <kwc-art-player share="[[share]]"
@@ -137,6 +142,12 @@ Custom property | Description | Default
                 },
                 _usePlayer(key, player) {
                     return key === player;
+                },
+                _hideCode(e) {
+                    this.set('displayCode', false);
+                    this.dispatchEvent(new CustomEvent('hide-code', {
+                        detail: e.detail
+                    }));
                 }
 
             });

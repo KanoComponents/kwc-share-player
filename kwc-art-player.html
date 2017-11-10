@@ -9,6 +9,7 @@
 <link rel="import" href="../kwc-style/typography.html">
 <link rel="import" href="../kwc-style/color.html">
 <link rel="import" href="../kwc-icons/kwc-icons.html">
+<link rel="import" href="./elements/kwc-code-display.html">
 
 <!--
 `kwc-art-player`
@@ -38,117 +39,6 @@ Player UI component for make art shares.
                 min-height: var(--kwc-share-player-height, 300px);
                 min-width: var(--kwc-share-player-height, 300px);
             }
-            .code {
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-start-justified;
-                background-color: rgba(65, 74, 81, 0.8);
-                height: var(--kwc-share-player-height, 350px);
-                left: 0;
-                min-height: var(--kwc-share-player-height, 350px);
-                padding: 25px 16px 0 16px;
-                position: absolute;
-                top: 0;
-                width: 100%;
-                z-index: 100;
-            }
-            .code-title {
-                margin-left: 20px;
-            }
-            .code-contents {
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-start-justified;
-                background-color: rgba(65, 74, 81, 0.8);
-                height: 100%;
-                margin: auto;
-                max-width: 880px;
-                width: 100%;
-            }
-            :host(.loaded) iron-image {
-                opacity: 0;
-            }
-            :host(:not(.loaded)) kano-art-player {
-                opacity: 0;
-            }
-            .code-header {
-                @apply --layout-horizontal;
-                @apply --layout-center;
-                @apply --layout-justified;
-                border-bottom: 1px solid var(--color-grey);
-                color: white;
-                padding-bottom: 16px;
-                width: 100%;
-            }
-            .code-icon {
-                color: var(--color-azure);
-                margin-right: 16px;
-                vertical-align: -25%;
-            }
-            .close-button {
-                -webkit-appearance: none;
-                appearance: none;
-                background-color: var(--color-grey);
-                border: 0;
-                border-radius: 3px;
-                cursor: pointer;
-                padding: 8px;
-            }
-            .close-button:focus {
-                outline: 0;
-            }
-            .close-button-icon {
-                color: white;
-                height: 16px;
-                transform: rotate(45deg);
-                width: 16px;
-            }
-            .code-main {
-                @apply --layout-horizontal;
-                @apply --layout-start;
-                @apply --layout-justified;
-                overflow-y: scroll;
-                padding: 16px 0;
-                width: 100%;
-            }
-            .line-numbers {
-                @apply --layout-flex-1;
-                color: white;
-                font-family: monospace;
-                font-size: 14px;
-                line-height: 18px;
-                opacity: 0.1;
-                padding: 1em 16px 0 0;
-                position: relative;
-                text-align: center;
-            }
-            marked-element {
-                @apply --layout-flex-12;
-                font-size: 14px;
-                line-height: 18px;
-                width: 100%;
-            }
-            .markdown-html {
-                color: white;
-            }
-            .markdown-html .token.number {
-                color: var(--color-amber);
-            }
-            .markdown-html .token.function,
-            .markdown-html .token.keyword {
-                color: #d356cf;
-            }
-            .markdown-html .token.title {
-                color: var(--color-kano-orange);
-            }
-            .markdown-html .token.string {
-                color: var(--color-grassland);
-            }
-            .markdown-html .token.punctuation,
-            .markdown-html .token.operator {
-                color: white;
-                background: transparent;
-            }
         </style>
         <div class="player">
             <iron-image id="image"
@@ -158,30 +48,11 @@ Player UI component for make art shares.
                         </iron-image>
         </div>
         <template is="dom-if" if="[[displayCode]]">
-            <div class="code">
-                <div class="code-contents">
-                    <div class="code-header">
-                        <h3 class="code-title">
-                            <iron-icon class="code-icon" icon="kwc-social-icons:code"></iron-icon>
-                            CoffeeScript
-                        </h3>
-                        <button type="button" class="close-button" on-tap="_hideCode">
-                            <iron-icon class="close-button-icon" icon="kwc-ui-icons:close"></iron-icon>
-                        </button>
-                    </div>
-                    <div class="code-main">
-                        <div class="line-numbers">
-                            <template is="dom-repeat" items="[[_lines]]" as="line">
-                                <div class="line-number">[[line]]</div>
-                            </template>
-                        </div>
-                        <prism-highlighter></prism-highlighter>
-                        <marked-element id="code" markdown="[[_mdCode]]">
-                            <div class="markdown-html"></div>
-                        </marked-element>
-                    </div>
-                </div>
-            </div>
+                <kwc-code-display code="[[_mdCode]]"
+                                  lines="[[_lines]]"
+                                  code-type="CoffeeScript"
+                                  on-hide-code="_hideCode">
+                                  </kwc-code-display>
         </template>
         </iron-pages>
     </template>
