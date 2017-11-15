@@ -9,19 +9,23 @@
 <dom-module id="kwc-code-display">
     <template>
         <style>
-            .code {
+            :host {
+                position: absolute;
+                top:0;
+                right: 0;
+                left: 0;
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
                 background-color: rgba(50, 50, 50, 0.8);
                 height: var(--kwc-code-display-height, 480px);
-                left: 0;
                 min-height: var(--kwc-code-display-height, 480px);
                 padding: 50px 16px 0 16px;
-                position: absolute;
-                top: 0;
                 width: 100%;
                 z-index: 100;
+            }
+            .code {
+                width: 100%;
             }
 
             .code-contents {

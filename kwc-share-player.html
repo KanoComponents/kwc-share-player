@@ -27,22 +27,34 @@ Custom property | Description | Default
                 @apply --layout-flex;
                 background: var(--kw-share-detail-share-background, --color-chateau);
                 padding: 0px 16px;
-                min-height: var(--kwc-share-player-height, 480px);
+                max-height: var(--kwc-share-player-height, 480px);
                 height: var(--kwc-share-player-height, 480px);
                 box-sizing: border-box;
                 position: relative;
             }
-            #share-container>* {
+            #share-container {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            kwc-app-player,
+            kwc-art-player
+             {
                 background-color: transparent;
                 height: 100%;
                 margin: 20px auto;
                 max-width: 600px;
                 width: 100%;
-                @apply --layout-fit;
+                /* @apply --layout-fit; */
                 animation: fade-in 200ms linear;
             }
             kwc-app-player {
                 --kwc-app-player-height: var(--kwc-share-player-height, 480px)
+            }
+            kwc-art-player {
+                --kwc-art-player-height: var(--kwc-share-player-height, 480px)
             }
             @media all and (max-width: 680px) {
                 #share-container>* {
