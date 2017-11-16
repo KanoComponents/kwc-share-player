@@ -25,7 +25,8 @@
                 @apply --layout-flex;
                 @apply --layout-self-stretch;
                 height: 100%;
-                width: 100%;
+                width: 70%;
+                margin: auto;
             }
             :host(.fullscreen) {
                 padding: 20vh 16px;
@@ -73,6 +74,8 @@
                 color: var(--color-red, red);
             }
             :host([layout="vertical"]) kano-app-player-toolbar {
+                position: relative;
+                top: 10px;
                 width: 100%;
             }
             :host([layout="horizontal"]) kano-app-player-toolbar {
@@ -95,12 +98,17 @@
             </template>
         </div>
         <template is="dom-if" if="{{showToolbar}}">
-            <iron-icon class="icon close" hidden$="[[!fullscreen]]" icon="kano-icons:close" on-tap="_toggleFullscreen"></iron-icon>
+            <iron-icon class="icon close"
+                       hidden$="[[!fullscreen]]"
+                       icon="kano-icons:close"
+                       on-tap="_toggleFullscreen">
+                       </iron-icon>
             <kano-app-player-toolbar layout="[[toolbarLayout]]"
                                      running="[[running]]"
                                      on-run-button-clicked="_toggleRunning"
                                      on-reset-button-clicked="_reset"
-                                     on-fullscreen-button-clicked="_toggleFullscreen"></kano-app-player-toolbar>
+                                     on-fullscreen-button-clicked="_toggleFullscreen">
+                                    </kano-app-player-toolbar>
         </template>
         <template is="dom-if" if="{{showHardware}}">
             Hardware

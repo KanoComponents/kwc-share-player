@@ -26,7 +26,6 @@
 Player UI component for kano code shares.
 Custom property | Description | Default
 ----------------|-------------|----------
-`--kwc-app-player-height` | Height for the element | `480px`
 
 @demo demo/index-app.html
 -->
@@ -35,6 +34,7 @@ Custom property | Description | Default
         <style>
             :host {
                 display: block;
+                height: 100%;
             }
 
             :host * {
@@ -53,7 +53,7 @@ Custom property | Description | Default
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-center-justified;
-                height: 90%;
+                height: 100%;
                 position: relative;
             }
 
@@ -67,15 +67,11 @@ Custom property | Description | Default
 
             kano-app-player:not(.fullscreen) {
                 @apply --layout-flex;
-                max-width: 600px;
                 padding: 8px 24px 40px 16px;
                 transition: opacity 200ms linear;
                 width: 100%;
             }
 
-            kwc-code-display {
-                --kwc-code-display-height: var(--kwc-app-player-height, 480px);
-            }
         </style>
         <div class="app">
             <iron-image src="[[share.cover_url]]" sizing="contain"></iron-image>
@@ -87,7 +83,7 @@ Custom property | Description | Default
                 layout="vertical">
                 </kano-app-player>
         </div>
-        <slot name="hardware"></slot>
+
         <template is="dom-if" if="[[displayCode]]">
             <kwc-code-display code="[[_mdCode]]"
                               lines="[[_lines]]"

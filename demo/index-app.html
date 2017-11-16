@@ -29,6 +29,9 @@
             position: relative;
             bottom: 5px;
         }
+        kwc-share-player {
+            --kwc-share-player-height: 500px;
+        }
     </style>
 </head>
 
@@ -56,18 +59,22 @@
                         }.bind(this);
                     });
                     const shareData = {
-                            "id": "595a6c169f797577bd72bd70",
-                            "app": "make-apps",
-                            "slug": "mr-jump-man_1",
-                            "hardware": [
-                                {
-                                    "product": "lightboard"
-                                }
-                            ],
+                        "id": "595a6c169f797577bd72bd70",
+                        "app": "make-apps",
+                        "attachments": {
                             "cover_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/covers/595a6c169f797577bd72bd70.png",
                             "attachment_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/attachments/595a6c169f797577bd72bd70.html",
-                            "workspace_info_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/workspace-info/595a6c169f797577bd72bd70.json"
-                        }
+                            "resource_url": null,
+                            "sample_url": null,
+                            "workspace_info_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/workspace-info/595a6c169f797577bd72bd70.json",
+                            "lightboard_spritesheet_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/lightboard-spritesheets/595a6c169f797577bd72bd70.png",
+                            "animation_url": null
+                        },
+                        "attachment_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/attachments/595a6c169f797577bd72bd70.html",
+                        "workspace_info_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/workspace-info/595a6c169f797577bd72bd70.json",
+                        "cover_url": "https://s3-eu-west-1.amazonaws.com/world.kano.me.staging/share-items/covers/595a6c169f797577bd72bd70.png",
+                        "slug": "mr-jump-man_1"
+                    }
 
                 </script>
             </template>

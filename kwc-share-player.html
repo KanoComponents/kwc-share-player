@@ -10,6 +10,7 @@ Component that will select the appropriate share player for a given share.
 Custom property | Description | Default
 ----------------|-------------|----------
 `--kwc-share-player-height` | Height for the element | `480px`
+`--kwc-share-player-background` | Background color of the player | chateau
 
 @demo demo/index-share.html
 -->
@@ -24,74 +25,39 @@ Custom property | Description | Default
             :host {
                 display: block;
                 width: 100%;
-                @apply --layout-flex;
-                background: var(--kw-share-detail-share-background, --color-chateau);
-                padding: 0px 16px;
+                background: var(--kwc-share-player-background, --color-chateau);
                 max-height: var(--kwc-share-player-height, 480px);
                 height: var(--kwc-share-player-height, 480px);
                 box-sizing: border-box;
                 position: relative;
             }
-            #share-container {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
             kwc-app-player,
             kwc-art-player
              {
-                background-color: transparent;
-                height: 100%;
-                margin: 20px auto;
-                max-width: 600px;
-                width: 100%;
-                /* @apply --layout-fit; */
                 animation: fade-in 200ms linear;
-            }
-            kwc-app-player {
-                --kwc-app-player-height: var(--kwc-share-player-height, 480px)
-            }
-            kwc-art-player {
-                --kwc-art-player-height: var(--kwc-share-player-height, 480px)
-            }
-            @media all and (max-width: 680px) {
-                #share-container>* {
-                    max-height: calc(100% - 120px);
-                    padding: 0 20px;
-                }
-            }
-            @media all and (min-width: 681px) {
-                #share-container>* {
-                    max-height: calc(100% - 40px);
-                }
             }
             :host([tombstone]) {
                 opacity: 0.3;
             }
         </style>
-        <div id="share-container">
-            <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
-                <kwc-app-player share="[[share]]"
-                                display-code="{{displayCode}}"
-                                on-hide-code="_hideCode">
-                    <slot slot="hardware" name="hardware-list"></slot>
-                </kwc-app-player>
-            </template>
-            <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
-                <kwc-art-player share="[[share]]"
-                                display-code="{{displayCode}}">
-                                </kwc-art-player>
-            </template>
-            <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp>
-                <h1> MUSIC </h1>
-            </template>
-            <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp>
-                <kwc-player share="[[share]]"></kwc-player>
-            </template>
-
-        </div>
+        <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
+            <kwc-app-player share="[[share]]"
+                            display-code="{{displayCode}}"
+                            on-hide-code="_hideCode">
+                <slot slot="hardware" name="hardware-list"></slot>
+            </kwc-app-player>
+        </template>
+        <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
+            <kwc-art-player share="[[share]]"
+                            display-code="{{displayCode}}">
+                            </kwc-art-player>
+        </template>
+        <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp>
+            <h1> MUSIC </h1>
+        </template>
+        <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp>
+            <kwc-player share="[[share]]"></kwc-player>
+        </template>
     </template>
 
     <script>
@@ -134,11 +100,9 @@ Custom property | Description | Default
                     const share = shareChange.base;
                     let player;
 
-                    if (!Object.keys(share).length) {
+                    if (!share || !Object.keys(share).length) {
                         return;
                     }
-                    //Force art player until we solve the app player issue.
-                    // player = 'art';
                     player = appMapping[share.app] || 'default';
 
                     if (loadedImports[player]) {
