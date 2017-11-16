@@ -58,23 +58,39 @@ Player UI component for make art shares.
         Polymer({
             is:'kwc-art-player',
             properties: {
+                /**
+                 * The code that creates this share.
+                 */
                 _code: {
                     type: String,
                     value: null
                 },
+                /**
+                 * Flag to indicate whether the code display element is visible.
+                 */
                 displayCode: {
                     type: Boolean,
                     value: false,
                     notify: true
                 },
+                /**
+                 * An array of line numbers for rendering the code display.
+                 */
                 _lines: {
                     type: Array,
                     computed: '_computeLines(_mdCode)'
                 },
+                /**
+                 * The markdown version of the share code to display in the 
+                 * code display element.
+                 */
                 _mdCode: {
                     type: String,
                     value: null
                 },
+                /**
+                 * The current share to be played.
+                 */
                 share: {
                     type: Object,
                     value: () => {
@@ -85,22 +101,30 @@ Player UI component for make art shares.
             observers: [
                 '_shareChanged(share.*)'
             ],
+            /** OBSERVERS **/
+            /**
+             * Computed the number of lines in the share's code and
+             * populated an array with the list of numbers.
+             */
             _computeLines (mdCode) {
                 if (!mdCode) {
                     return [];
                 }
                 let newLines = mdCode.match(/\n(?!$)/g),
                     lineCount = newLines ? newLines.length : 1
-                    lines =  Array.apply(null, {
-                        length: lineCount
-                    }).map(Number.call, Number);
-                return lines.splice(1);
+                    lines = [];
+                /* Don't include the header */
+                for (let i = 1; i < lineCount; i++) {
+                    lines.push(i);
+                }
+                return lines;
             },
-            _hideCode () {
-                this.set('displayCode', false);
-                this.dispatchEvent(new CustomEvent('hide-code'));
-            },
+             /**
+             * Load any code from storage and compute the markdown for 
+             * display in the display code element.
+             */
             _shareChanged () {
+                if (!this.share){return;}
                 let attachment = this.share.attachment_url;
                 if (attachment) {
                     fetch(attachment)
@@ -110,6 +134,15 @@ Player UI component for make art shares.
                             this._mdCode = '```coffeescript\n' + code + '\n```';
                         });
                 }
+            },
+            /** EVENT HANDLERS**/
+            /**
+             * Set the property responsible for displaying and hiding the 
+             * display code element.
+             */
+            _hideCode () {
+                this.set('displayCode', false);
+                this.dispatchEvent(new CustomEvent('hide-code'));
             }
         });
     </script>

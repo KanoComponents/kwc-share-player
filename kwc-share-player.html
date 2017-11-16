@@ -77,17 +77,30 @@ Custom property | Description | Default
                     Polymer.LazyImportsBehavior
                 ],
                 properties: {
+                    /**
+                     * Flag to indicate to the player whether the show code display element
+                     * or not.
+                     * @type {Boolean}
+                     */
                     displayCode: {
                         type: Boolean,
                         value: false,
                         notify: true
                     },
+                    /**
+                     * The current share to be played.
+                     * @type {Object}
+                     */
                     share: {
                         type: Object,
                         value: () => {
                             return {}
                         }
                     },
+                    /**
+                     * String to select which player to use for a given share.
+                     * @type {String}
+                     */
                     _player: {
                         type: String,
                         value: ""
@@ -96,6 +109,13 @@ Custom property | Description | Default
                 observers: [
                     '_shareChanged(share.*)'
                 ],
+                /** OBSERVERS **/
+                /**
+                 * The share data is used to set the _player property which selects
+                 * which player to use. It will import the player if not imported
+                 * previously and then trigger a change in the iron pages.
+                 * @param {Object} share Current share data
+                 */
                 _shareChanged(shareChange) {
                     const share = shareChange.base;
                     let player;
@@ -116,9 +136,22 @@ Custom property | Description | Default
                         });
                     }
                 },
+                /**
+                 * Boolean to indicate iron pages which page to display.
+                 * @param {String} key from iton page
+                 * @param {String} player selected for current page
+                 * @return {Boolean} do the key and player match?
+                 */
                 _usePlayer(key, player) {
                     return key === player;
                 },
+                /** EVENT HANDLERS**/
+                /**
+                * Set the property responsible for displaying and hiding the 
+                * display code element.
+                *
+                * @event hide-code
+                */
                 _hideCode(e) {
                     this.set('displayCode', false);
                     this.dispatchEvent(new CustomEvent('hide-code', {
