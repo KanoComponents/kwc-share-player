@@ -1,16 +1,10 @@
 <link rel="import" href="./app-module.html">
 <script>
     (function (Kano) {
-        const GUARD_LIST = [
-            '_on',
-            '_getDeviceForPart:Object',
-            '_removeListener'
-        ];
 
         class DongleModule extends Kano.AppModules.AppModule {
             constructor () {
                 super();
-                super.guardMethods(this.__proto__, GUARD_LIST);
 
                 this.addMethod('on', '_on');
                 this.addMethod('removeListener', '_removeListener');

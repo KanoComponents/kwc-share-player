@@ -6,40 +6,6 @@
                 this.lifecycle = {};
                 this.methods = {};
             }
-            addGuard(fn, rtnType){
-                const rtnTypeMap = {
-                    "Array": [],
-                    "Object": {},
-                    "BoolF": false,
-                    "BoolT": true
-                };
-                return function() {
-                    if (this.api instanceof Kano.MakeApps.HardwareAPI) {
-                        return fn.apply(this, arguments);
-                    } else {
-                        if (rtnType) {
-                            if (rtnType === 'callback') {
-                                //Assume last arg is the callback
-                                const cb = arguments[arguments.length - 1];
-                                return cb('No Hardware Api Loaded');
-                            } else{
-                                return rtnTypeMap[rtnType];
-                            }
-                         } else {
-                             return;
-                         }
-                    }
-                }
-            }
-            guardMethods(obj, guardList){
-                guardList.forEach((methodDef) => {
-                    const [ mName, mRtnType ] = methodDef.split(':');
-                    if (typeof obj[mName] === 'function') {
-                        obj[mName] = this.addGuard(obj[mName], mRtnType);
-                    }
-                });
-            }
-            
             config () {}
             addMethod (name, cbName) {
                 if (typeof this[cbName] === 'function') {

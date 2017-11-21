@@ -2,19 +2,9 @@
 <link rel="import" href="../pixel-font.html">
 <script>
     (function (Kano) {
-        const GUARD_LIST = [
-            '_getAllLightboards:Array',
-            'drawLights',
-            '_getVolume',
-            '_on',
-            '_removeAllListeners',
-            '_removeListener'
-        ];
         class LightboardModule extends Kano.AppModules.AppModule {
             constructor () {
                 super();
-                super.guardMethods(this.__proto__, GUARD_LIST);
-
                 this.backgroundColor = '#000000';
                 this.lights = new Array(128);
                 this.shapes = {};
@@ -98,9 +88,13 @@
              * get all connected lightboards and do the action on all of them.
              */
             _getAllLightboards () {
-                return this.api.getAllDevices().filter((dev) => {
-                    return dev.product === 'lightboard' || dev.product === 'RPK';
-                });
+                if (this.api) {
+                    return this.api.getAllDevices().filter((dev) => {
+                        return dev.product === 'lightboard' || dev.product === 'RPK';
+                    });
+                } else {
+                    return [];
+                }
             }
 
             paint () {
