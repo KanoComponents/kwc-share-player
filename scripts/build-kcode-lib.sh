@@ -8,6 +8,7 @@ tar -cvf lib.tar \
     elements/kano-animated-svg elements/kano-app-player-toolbar \
     elements/kano-app-player elements/behaviors/kano-workspace-behavior.html \
     elements/behaviors/kano-app-element-registry-behavior.html \
+    elements/kano-icons/kc-ui.html \
     elements/kano-workspace-normal elements/kano-workspace-lightboard \
     elements/kano-workspace-camera elements/kano-bitmap-renderer \
     elements/part elements/ui elements/kano-gif-creator scripts/kano/make-apps/utils.html\
