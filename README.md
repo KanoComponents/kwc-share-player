@@ -1,26 +1,26 @@
 # \<kwc-share-player\>
 
-To wrap the app player in a UI component specific to the type of the share, e.g. &#34;Pixel Kit&#34;.
-
- - What is it called?
-     - kwc-share-player
- - What is it made out of?
-     - Describe here the contents of this component
- - What variants are needed?
-     - Variant 1:
-     - Variant 2:
-     - Variant 3:
- - How does it scale?
-     - Desktop: ...
-     - Mobile: ...
- - What style variables are in use?
-     - Style 1: ...
-     - Style 2: ...
+A set of players (viewers) for each category of kano app share. 
 
 ## Installation
 Clone this repository.
 Run `bower i`
 
+This component contains the `kano-code` repo as a submodule to allow it to pull across some files on which it depends. The intetion is that this submodule will be reomved once the `kano-code` project is published as a library for use across the kano projects.
+
+In order to get the submodule up and running you need to run two git commands when you clone this repo.
+```sh
+$ git submodule init
+$ git submodule update
+```
+
+Finally there is a `bash` script that will pull across the files that this repo depends on from the submodule. 
+
+```sh
+$ ./scripts/build-kcode-lib.sh
+```
+
+So the intention is not to directly use the `kano-code` submodule in the development on this component, but insted to have it available and set the the correct commit so that just the files that this components depends on can be pulled across in a manual process.
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
