@@ -18,7 +18,7 @@ tar -cvf lib.tar \
     scripts/kano/pixel-font.html scripts/kano/music \
     scripts/kano/microphone.html scripts/kano/make-apps/microphone-proxy.html \
     scripts/kano/make-apps/spring.html scripts/kano/webcam.js \
-    scripts/kano/make-apps/text-to-speech.js
+    scripts/kano/make-apps/text-to-speech.js scripts/util/client.js
 
 popd
 mv ../kano-code/app/lib.tar ../lib
