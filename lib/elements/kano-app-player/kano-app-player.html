@@ -181,7 +181,7 @@
                 /** Inject app styles on old shares */
                 root.appendChild(c);
                 styleElm = c.$$('style');
-                if (!styleElm) {
+                if (!styleElm && c.appModules) {
                     let styleElm = document.createElement('style');
                     styleElm.innerHTML = c.appModules.componentStyles;
                     c.root.appendChild(styleElm);
