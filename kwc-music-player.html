@@ -1,12 +1,12 @@
-<link rel="import" href="../../../../polymer/polymer.html">
-<link rel="import" href="../../../../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <!--
 
 
     @demo demo/index.html
 -->
-<dom-module id="kw-music-share">
+<dom-module id="kwc-music-player">
     <template>
         <style>
             :host {
@@ -51,9 +51,16 @@
             }
         </style>
         <div class="player">
-            <button type="button" class="playback-button" on-tap="_playbackButtonTapped" hidden$="[[cannotRenderSample]]">
+            <button
+                type="button"
+                class="playback-button"
+                on-tap="_playbackButtonTapped"
+                hidden$="[[cannotRenderSample]]">
                 <svg viewBox="0 0 17 19">
-                    <path id="button-icon-path" d="M 4,18 10.5,14 10.5,6 4,2 z M 10.5,14 17,10 17,10 10.5,6 z"></path>
+                    <path
+                        id="button-icon-path"
+                        d="M 4,18 10.5,14 10.5,6 4,2 z M 10.5,14 17,10 17,10 10.5,6 z">
+                    </path>
                 </svg>
             </button>
             <div id="spectrum-container" class="spectrum">
@@ -64,7 +71,7 @@
     </template>
     <script>
         Polymer({
-            is: 'kw-music-share',
+            is: 'kwc-music-player',
             properties: {
                 share: {
                     type: Object,

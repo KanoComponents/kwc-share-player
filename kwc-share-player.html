@@ -42,19 +42,23 @@ Custom property | Description | Default
             }
         </style>
         <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
-            <kwc-app-player share="[[share]]"
-                            display-code="{{displayCode}}"
-                            on-hide-code="_hideCode">
+            <kwc-app-player 
+                share="[[share]]"
+                display-code="{{displayCode}}"
+                on-hide-code="_hideCode">
                 <slot slot="hardware" name="hardware-list"></slot>
             </kwc-app-player>
         </template>
         <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
-            <kwc-art-player share="[[share]]"
-                            display-code="{{displayCode}}">
-                            </kwc-art-player>
+            <kwc-art-player 
+                share="[[share]]"
+                display-code="{{displayCode}}">
+            </kwc-art-player>
         </template>
         <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp>
-            <h1> MUSIC </h1>
+            <kwc-music-player 
+                share="[[share]]">
+            </kwc-music-player>
         </template>
         <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp>
             <kwc-player share="[[share]]"></kwc-player>
@@ -69,7 +73,7 @@ Custom property | Description | Default
                 'make-apps' : 'app',
                 'lightboard': 'app'
             },
-            loadedImports = {"music": true};
+            loadedImports = {};
 
             Polymer({
 
