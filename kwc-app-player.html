@@ -1,5 +1,4 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 
 <link rel="import" href="../kwc-style/typography.html">
@@ -39,10 +38,6 @@ Player UI component for kano code shares.
                 box-sizing: border-box;
             }
 
-            :host(.loaded) iron-image {
-                opacity: 0;
-            }
-
             :host(:not(.loaded)) kano-app-player {
                 opacity: 0;
             }
@@ -55,14 +50,6 @@ Player UI component for kano code shares.
                 position: relative;
             }
 
-            iron-image {
-                @apply --layout-fit;
-                height: 95%;
-                margin: auto;
-                transition: opacity 200ms linear;
-                width: 100%;
-            }
-
             kano-app-player:not(.fullscreen) {
                 @apply --layout-flex;
                 padding: 8px 24px 40px 16px;
@@ -72,7 +59,6 @@ Player UI component for kano code shares.
 
         </style>
         <div class="app">
-            <iron-image src="[[share.cover_url]]" sizing="contain"></iron-image>
             <kano-app-player id="player"
                 src="[[appUrl]]"
                 slug="[[slug]]"
