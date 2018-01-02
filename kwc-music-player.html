@@ -76,6 +76,13 @@
                 share: {
                     type: Object,
                     observer: '_shareChanged'
+                },
+                cannotRenderSample: {
+                    type: Boolean,
+                    value: false
+                },
+                playbackTime: {
+                    type: Number
                 }
             },
             observers: [
