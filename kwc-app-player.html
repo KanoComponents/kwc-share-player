@@ -60,8 +60,8 @@ Player UI component for kano code shares.
         </style>
         <div class="app">
             <kano-app-player id="player"
-                src="[[appUrl]]"
-                slug="[[slug]]"
+                src="[[_appUrl]]"
+                slug="[[_slug]]"
                 on-app-ready="_onAppReady"
                 show-toolbar
                 layout="vertical">
@@ -113,6 +113,14 @@ Player UI component for kano code shares.
                     type: String,
                     value: null
                 },
+                _slug: {
+                    type: String,
+                    value: null
+                },
+                _appUrl: {
+                    type: String,
+                    value: null
+                },
                 mode: {
                     type: String,
                     value: 'app'
@@ -155,8 +163,8 @@ Player UI component for kano code shares.
                 let attachment = this.share.attachment_url,
                     workspaceInfo = this.share.workspace_info_url;
                 if (attachment) {
-                    this.slug = this.share.slug;
-                    this.appUrl = attachment;
+                    this._slug = this.share.slug;
+                    this._appUrl = attachment;
                 }
                 if (workspaceInfo) {
                     fetch(workspaceInfo)
