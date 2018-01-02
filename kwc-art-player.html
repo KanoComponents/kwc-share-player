@@ -45,7 +45,7 @@ Player UI component for make art shares.
         <template is="dom-if" if="[[displayCode]]">
                 <kwc-code-display code="[[_mdCode]]"
                                   lines="[[_lines]]"
-                                  code-type="CoffeeScript"
+                                  code-type="[[_computeCodeType(share.app)]]"
                                   on-hide-code="_hideCode">
                                   </kwc-code-display>
         </template>
@@ -130,6 +130,13 @@ Player UI component for make art shares.
                             this._code = code;
                             this._mdCode = '```coffeescript\n' + code + '\n```';
                         });
+                }
+            },
+            _computeCodeType (app) {
+                if (app === 'make-light') {
+                    return 'Python';
+                } else {
+                    return 'CoffeeScript';
                 }
             },
             /** EVENT HANDLERS**/
