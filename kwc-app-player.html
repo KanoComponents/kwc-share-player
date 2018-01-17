@@ -38,7 +38,7 @@ Player UI component for kano code shares.
                 box-sizing: border-box;
             }
 
-            :host(:not(.loaded)) kano-app-player {
+            :host(:not([loaded])) kano-app-player {
                 opacity: 0;
             }
 
@@ -52,7 +52,6 @@ Player UI component for kano code shares.
 
             kano-app-player:not(.fullscreen) {
                 @apply --layout-flex;
-                padding: 8px 24px 40px 16px;
                 transition: opacity 200ms linear;
                 width: 100%;
             }
@@ -97,6 +96,15 @@ Player UI component for kano code shares.
                     value: false
                 },
                 /**
+                 * Boolean flag to indicate whether the app has loaded
+                 * @type {Boolean}
+                 */
+                loaded: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
+                },
+                /**
                  * An array of line numbers for rendering the code display.
                  * @type {Array}
                  */
@@ -105,7 +113,7 @@ Player UI component for kano code shares.
                     computed: '_computeLines(_mdCode)'
                 },
                 /**
-                 * The markdown version of the share code to display in the 
+                 * The markdown version of the share code to display in the
                  * code display element.
                  * @type {String}
                  */
@@ -155,11 +163,20 @@ Player UI component for kano code shares.
                 return lines;
             },
             /**
-             * Load any code from storage and compute the markdown for 
+             * Load any code from storage and compute the markdown for
              * display in the display code element.
              * @param {Object} share Current share data
              */
             _shareChanged(share) {
+                /**
+                 * If this component is being used to load a series of shares
+                 * in order, and there currently isn't any share data, then we
+                 * need to reset the `loaded` status back to `false` to hide the
+                 * app player.
+                 */
+                if (!share) {
+                    return this.loaded = false;
+                }
                 let attachment = this.share.attachment_url,
                     workspaceInfo = this.share.workspace_info_url;
                 if (attachment) {
@@ -188,10 +205,10 @@ Player UI component for kano code shares.
                 this.fire('hide-code');
             },
             /**
-             * Toggle the loaded class in order to show the app player.
+             * Toggle the loaded property in order to show the app player.
              */
             _onAppReady() {
-                this.toggleClass('loaded', true);
+                this.loaded = true;
             }
         });
     </script>
