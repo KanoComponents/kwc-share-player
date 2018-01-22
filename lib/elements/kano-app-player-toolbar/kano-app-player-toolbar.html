@@ -73,10 +73,22 @@
             .icon:focus iron-icon {
                 opacity: 1;
             }
-            
+
             .panel .icon:hover {
                 background-color: var(--color-kano-orange);
             }
+
+            /*
+            XXX: Hide fullscreen button on mobile screens while the
+            functionality until a full responsive solution is in place.
+            `768px` is the current media query value for `kwc-masthead`.
+            */
+            @media (max-width: 768px) {
+                .panel .icon.fullscreen {
+                    display: none;
+                }
+            }
+
         </style>
         <div class="panel">
             <span>
