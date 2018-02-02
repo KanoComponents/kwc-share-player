@@ -10,7 +10,7 @@
                 height: 100%;
                 background: var(--canvas-background, #ffffff);
             }
-            .content ::slotted(*:not(.hole)) {
+            :host ::slotted(*:not(.hole)) {
                 position: absolute;
                 top: 0px;
                 left: 0px
@@ -20,9 +20,7 @@
             }
         </style>
         <canvas id="canvas" width$="[[width]]" height$="[[height]]"></canvas>
-        <div class="content">
-            <slot></slot>
-        </div>
+        <slot></slot>
     </template>
     <script>
         /* globals Polymer, Kano */
