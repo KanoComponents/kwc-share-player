@@ -1,4 +1,4 @@
-<link rel="import" href="../../bower_components/iron-signals/iron-signals.html">
+<link rel="import" href="../../../../iron-signals/iron-signals.html">
 <link rel="import" href="../../scripts/kano/make-apps/mode/light.html">
 <link rel="import" href="../behaviors/kano-workspace-behavior.html">
 <link rel="import" href="../behaviors/kano-app-element-registry-behavior.html">
@@ -162,7 +162,7 @@
                 transform: scale(0.9);
             }
         </style>
-        <iron-image src="/assets/mode/lightboard/body.svg" sizing="contain" width="[[width]]" height="[[height]]"></iron-image>
+        <iron-image src="https://apps.kano.me/assets/mode/lightboard/body.svg" sizing="contain" width="[[width]]" height="[[height]]"></iron-image>
         <button id="lightboard-btn-A"
                 class="btn"
                 on-mousedown="_mouseDown"
@@ -353,8 +353,8 @@
                     paintLeds, hsl, x, y;
 
                 return Promise.all([
-                    this.loadImage('/assets/mode/lightboard/body.svg'),
-                    this.loadImage('/assets/mode/lightboard/led.svg')
+                    this.loadImage('https://apps.kano.me/assets/mode/lightboard/body.svg'),
+                    this.loadImage('https://apps.kano.me/assets/mode/lightboard/led.svg')
                 ]).then(images => {
                     let body = images[0],
                         led = images[1],

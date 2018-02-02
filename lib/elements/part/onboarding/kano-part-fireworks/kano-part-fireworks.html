@@ -1,5 +1,5 @@
-<link rel="import" href="../../../../bower_components/web-components/kano-style/part.html">
-<link rel="import" href="../../../../bower_components/web-components/kano-sound-player-behavior/kano-sound-player-behavior.html">
+<link rel="import" href="../../../../../../web-components/kano-style/part.html">
+<link rel="import" href="../../../../../../web-components/kano-sound-player-behavior/kano-sound-player-behavior.html">
 
 <dom-module id="kano-part-fireworks">
     <style is="custom-style" include="part-style"></style>
@@ -53,7 +53,7 @@
                 this.frameTick();
                 // load sound after initialisation
                 this.async(() => {
-                    this.loadSound('/assets/audio/sounds/pop.wav');
+                    this.loadSound('https://apps.kano.me/assets/audio/sounds/pop.wav');
                 }, 500);
             },
             enable (flag) {
@@ -67,7 +67,7 @@
                     let loopFirework = setInterval(() => {
                         let x = Math.random() * bounds.width * (this.$.canvas.width / bounds.width),
                             y = Math.random() * bounds.width * (this.$.canvas.height / bounds.width)
-                        this.playSound('/assets/audio/sounds/pop.wav');
+                        this.playSound('https://apps.kano.me/assets/audio/sounds/pop.wav');
                         this.generateParticles(x, y);
                     }, 200);
 
