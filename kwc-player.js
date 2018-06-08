@@ -1,0 +1,53 @@
+/**
+`kwc-player`
+Default share player.
+Custom property | Description | Default
+----------------|-------------|----------
+`--kwc-player-height` | Height for the element | `300px`
+
+@group Kano Web Components
+@demo demo/index-share.html
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
+
+import '@polymer/iron-image/iron-image.js';
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+Polymer({
+  _template: html`
+        <style>
+            :host {
+                height: var(--kwc-player-height, 300px);
+                width: var(--kwc-player-height, 300px);
+            }
+            .app {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                @apply --layout-center-justified;
+                height: 100%;
+                position: relative;
+            }
+            iron-image {
+                @apply --layout-vertical;
+                @apply --layout-center;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+        <div class="app">
+            <iron-image src="[[share.cover_url]]" sizing="contain" preload="" fade=""></iron-image>
+        </div>
+`,
+
+  is: 'kwc-player',
+
+  properties: {
+      share: Object
+  }
+});

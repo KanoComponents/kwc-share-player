@@ -6,14 +6,18 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
 
-        <script src="../../../../../webcomponentsjs/webcomponents-lite.js"></script>
-        <link rel="import" href="../../../../../iron-demo-helpers/demo-snippet.html">
-        <link rel="import" href="../../../../../iron-demo-helpers/demo-pages-shared-styles.html">
-        <link rel="import" href="../kw-music-share.html">
+        <script type="module" src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+        <script type="module" src="../../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+        <script type="module" src="../../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+        <script type="module" src="../kwc-music-player.js"></script>
 
-        <link rel="import" href="../../../../../web-components/kano-style/typography.html">
+        <script type="module" href="../../../node_modules/@polymer/web-components/kano-style/typography.js"></script>
 
-        <style is="custom-style" include="demo-pages-shared-styles">
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
             kw-music-share {
                 width: 520px;
                 height: 200px;
@@ -22,15 +26,21 @@
             .centered {
                 max-width: 600px !important;
             }
-        </style>
+        </style>`;
+
+document.head.appendChild($_documentContainer.content);
+</script>
     </head>
 
     <body unresolved>
-        <div class="vertical-section-container centered">
+        <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
             <h3>Default</h3>
             <demo-snippet>
                 <template>
-                    <kw-music-share id="share"></kw-music-share>
+                    <kwc-music-player id="share"></kwc-music-player>
                     <script>
                         document.addEventListener('WebComponentsReady', function () {
                             var card = document.querySelector('#share');
@@ -52,9 +62,12 @@
                                 sample_url: "https://s3-eu-west-1.amazonaws.com/world.kano.me/share-items/samples/581dfcd62204b21a7e99049e.oga"
                             }
                         });
-                    </script>
+                    &lt;/script>
                 </template>
             </demo-snippet>
             
-    </body>
-</html>
+    
+</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>

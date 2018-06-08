@@ -6,16 +6,28 @@
 
         <title>kwc-art-player demo</title>
 
-        <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+        <script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-        <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-        <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-        <link rel="import" href="../../paper-button/paper-button.html">
-        <link rel="import" href="../../kwc-style/typography.html">
-        <link rel="import" href="../../kwc-style/button.html">
-        <link rel="import" href="../kwc-share-player.html">
+        <script type="module" src="../../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+        <script type="module" src="../../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+        <script type="module" src="../../node_modules/@polymer/paper-button/paper-button.js"></script>
+        <script type="module" src="../../node_modules/@kano/kwc-style/typography.js"></script>
+        <script type="module" src="../../node_modules/@kano/kwc-style/button.js"></script>
+        <script type="module" src="../kwc-share-player.js"></script>
 
-        <style is="custom-style" include="demo-pages-shared-styles">
+        <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
             kwc-share-player {
                 --kwc-share-player-height: 500px;
             }
@@ -25,44 +37,50 @@
                 position: relative;
                 bottom: 5px;
             }
-        </style>
+        </style>`;
+
+document.head.appendChild($_documentContainer.content);
+</script>
     </head>
 
     <body>
-        <script>
+            <div class="vertical-section-container">
+                <h3>Share player for make art shares</h3>
+                <demo-snippet>
+                    <template>
+                        <paper-button id="toggle">Show code</paper-button>
+                        <kwc-share-player id="share"></kwc-share-player>
+                    </template>
+                </demo-snippet>
+        </div>
+        <script type="module">
+            import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+            import '@polymer/iron-demo-helpers/demo-snippet.js';
+            import '@polymer/paper-button/paper-button.js';
+            import '@kano/kwc-style/typography.js';
+            import '@kano/kwc-style/button.js';
+            import '../kwc-share-player.js';
             const shareData = {
                 id: "59dfbdc78276043dd9510cc9",
                 app: "kano-draw",
                 cover_url: "https://s3-eu-west-1.amazonaws.com/world.kano.me/share-items/covers/59dfbdc78276043dd9510cc9.png",
                 attachment_url: "https://s3-eu-west-1.amazonaws.com/world.kano.me/share-items/attachments/59dfbdc78276043dd9510cc9.draw"
             }
+            document.addEventListener('WebComponentsReady', function () {
+                const view = document.getElementById('share'),
+                        button = document.getElementById('toggle');
+
+                view.share = shareData;
+                button.addEventListener('click', () => {
+                    view.displayCode = !view.displayCode;
+                });
+                document.onkeydown = function(evt) {
+                    evt = evt || window.event;
+                    let isEscape = (evt.key == "Escape" || evt.key == "Esc");
+                    if (isEscape) {
+                        view.displayCode = false;
+                    }
+                }.bind(this);
+            });
         </script>
-        <div class="vertical-section-container">
-            <h3>Share player for make art shares</h3>
-            <demo-snippet>
-                <template>
-                    <paper-button id="toggle">Show code</paper-button>
-                    <kwc-share-player id="share"></kwc-share-player>
-                    <script>
-                        document.addEventListener('WebComponentsReady', function () {
-                            const view = document.getElementById('share'),
-                                  button = document.getElementById('toggle');
-
-                            view.share = shareData;
-                            button.addEventListener('click', () => {
-                                view.displayCode = !view.displayCode;
-                            });
-                            document.onkeydown = function(evt) {
-                                evt = evt || window.event;
-                                let isEscape = (evt.key == "Escape" || evt.key == "Esc");
-                                if (isEscape) {
-                                    view.displayCode = false;
-                                }
-                            }.bind(this);
-                        });
-                    </script>
-                </template>
-            </demo-snippet>
     </body>
-
-</html>
