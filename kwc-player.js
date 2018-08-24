@@ -1,3 +1,6 @@
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-image/iron-image.js';
+
 /**
 `kwc-player`
 Default share player.
@@ -8,46 +11,30 @@ Custom property | Description | Default
 @group Kano Web Components
 @demo demo/index-share.html
 */
-/*
-  FIXME(polymer-modulizer): the above comments were extracted
-  from HTML and may be out of place here. Review them and
-  then delete this comment!
-*/
-import '@polymer/polymer/polymer-legacy.js';
-
-import '@polymer/iron-image/iron-image.js';
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-Polymer({
-  _template: html`
+class KwcPlayer extends PolymerElement {
+    static get properties() {
+        return {
+            share: Object,
+        };
+    }
+    static get template() {
+        return html`
         <style>
             :host {
                 height: var(--kwc-player-height, 300px);
                 width: var(--kwc-player-height, 300px);
             }
-            .app {
-                @apply --layout-vertical;
-                @apply --layout-center;
-                @apply --layout-center-justified;
-                height: 100%;
-                position: relative;
-            }
             iron-image {
-                @apply --layout-vertical;
-                @apply --layout-center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 height: 100%;
                 width: 100%;
             }
         </style>
-        <div class="app">
-            <iron-image src="[[share.cover_url]]" sizing="contain" preload="" fade=""></iron-image>
-        </div>
-`,
+        <iron-image src="[[share.cover_url]]" sizing="contain" preload fade></iron-image>
+        `;
+    }
+}
 
-  is: 'kwc-player',
-
-  properties: {
-      share: Object
-  }
-});
+customElements.define('kwc-player', KwcPlayer);

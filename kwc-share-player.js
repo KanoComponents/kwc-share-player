@@ -1,7 +1,4 @@
-import '@polymer/polymer/polymer-legacy.js';
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 const appMapping = {
     'make-music': 'music',
@@ -19,8 +16,9 @@ const importsMap = {
     default: './kwc-player.js',
 };
 
-Polymer({
-    _template: html`
+class KwcSharePlayer extends PolymerElement {
+    static get template() {
+        return html`
         <style>
             :host {
                 display: block;
@@ -32,65 +30,63 @@ Polymer({
                 position: relative;
             }
             kwc-app-player,
-            kwc-art-player
-             {
+            kwc-art-player {
                 animation: fade-in 200ms linear;
             }
-            :host([tombstone]) {
-                opacity: 0.3;
-            }
         </style>
-        <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp="">
-            <kwc-app-player share="[[share]]" display-code="{{displayCode}}" on-hide-code="_hideCode">
+        <template is="dom-if" if="[[_usePlayer('app', _player)]]" restamp>
+            <kwc-app-player share="[[share]]" display-code="[[displayCode]]" on-hide-code="_hideCode">
                 <slot slot="hardware" name="hardware-list"></slot>
             </kwc-app-player>
         </template>
-        <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp="">
-            <kwc-art-player share="[[share]]" display-code="{{displayCode}}">
-            </kwc-art-player>
+        <template is="dom-if" if="[[_usePlayer('art', _player)]]" restamp>
+            <kwc-art-player share="[[share]]" display-code="[[displayCode]]"></kwc-art-player>
         </template>
-        <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp="">
-            <kwc-music-player share="[[share]]">
-            </kwc-music-player>
+        <template is="dom-if" if="[[_usePlayer('music', _player)]]" restamp>
+            <kwc-music-player share="[[share]]"></kwc-music-player>
         </template>
-        <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp="">
+        <template is="dom-if" if="[[_usePlayer('default', _player)]]" restamp>
             <kwc-player share="[[share]]"></kwc-player>
         </template>
-    `,
-    is: 'kwc-share-player',
-    properties: {
-        /**
-         * Flag to indicate to the player whether the show code display element
-         * or not.
-         * @type {Boolean}
-         */
-        displayCode: {
-            type: Boolean,
-            value: false,
-            notify: true
-        },
-        /**
-         * The current share to be played.
-         * @type {Object}
-         */
-        share: {
-            type: Object,
-            value: () => {
-                return {}
+    `;
+    }
+    static get properties() {
+        return {
+            /**
+             * Flag to indicate to the player whether the show code display element
+             * or not.
+             * @type {Boolean}
+             */
+            displayCode: {
+                type: Boolean,
+                value: false,
+                notify: true,
+            },
+            /**
+             * The current share to be played.
+             * @type {Object}
+             */
+            share: {
+                type: Object,
+                value: () => {
+                    return {}
+                },
+            },
+            /**
+             * String to select which player to use for a given share.
+             * @type {String}
+             */
+            _player: {
+                type: String,
+                value: '',
             }
-        },
-        /**
-         * String to select which player to use for a given share.
-         * @type {String}
-         */
-        _player: {
-            type: String,
-            value: ""
-        }
-    },
-    observers: [
-        '_shareChanged(share.*)'
-    ],
+        };
+    }
+    static get observers() {
+        return [
+            '_shareChanged(share.*)',
+        ];
+    }
     /** OBSERVERS **/
     /**
      * The share data is used to set the _player property which selects
@@ -110,17 +106,15 @@ Polymer({
         if (loadedImports[player]) {
             this.set('_player', player);
         } else {
-            this.async(() => {
-                this.lazyImport(player).then(() => {
-                    loadedImports[player] = true;
-                    this.set('_player', player);
-                });
+            this.lazyImport(player).then(() => {
+                loadedImports[player] = true;
+                this.set('_player', player);
             });
         }
-    },
+    }
     lazyImport(id) {
         return import(importsMap[id || 'default']);
-    },
+    }
     /**
      * Boolean to indicate iron pages which page to display.
      * @param {String} key from iton page
@@ -129,7 +123,7 @@ Polymer({
      */
     _usePlayer(key, player) {
         return key === player;
-    },
+    }
     /** EVENT HANDLERS**/
     /**
     * Set the property responsible for displaying and hiding the 
@@ -138,10 +132,10 @@ Polymer({
     * @event hide-code
     */
     _hideCode(e) {
-        this.set('displayCode', false);
-        this.dispatchEvent(new CustomEvent('hide-code', {
-            detail: e.detail
-        }));
+        this.displayCode = false;
+        this.dispatchEvent(new CustomEvent('hide-code', { detail: e.detail }));
     }
+}
 
-});
+
+customElements.define('kwc-share-player', KwcSharePlayer);

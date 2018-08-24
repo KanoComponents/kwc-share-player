@@ -1,12 +1,12 @@
-import '@polymer/polymer/polymer-legacy.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/marked-element/marked-element.js';
 import '@polymer/prism-element/prism-highlighter.js';
 import '@kano/kwc-icons/kwc-icons.js';
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
-Polymer({
-  _template: html`
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+
+class KwcCodeDisplay extends PolymerElement {
+    static get template() {
+        return html`
         <style>
             :host {
                 position: absolute;
@@ -159,41 +159,42 @@ Polymer({
                 </div>
             </div>
         </div>
-`,
+        `;
+    }
+    static get properties() {
+        return {
+            /**
+             * A list of numbers for use to enumerate the lines of code.
+             * @type {Array}
+             */
+            lines: {
+                type: Array,
+                value: null,
+            },
+            /**
+             * The code to display.
+             * @type {String}
+             */
+            code: {
+                type: String,
+                value: null,
+            },
+            /**
+             * A string to place in the header to indicate the code type.
+             * @type {String}
+             */
+            codeType: {
+                type: String,
+                value: 'Code',
+            }
+        };
+    }
+    /**
+     * @event hide-code
+     */
+    _hideCode() {
+        this.dispatchEvent(new CustomEvent('hide-code'));
+    }
+}
 
-  is: 'kwc-code-display',
-
-  properties: {
-      /**
-       * A list of numbers for use to enumerate the lines of code.
-       * @type {Array}
-       */
-      lines: {
-          type: Array,
-          value: null
-      },
-      /**
-       * The code to display.
-       * @type {String}
-       */
-      code: {
-          type: String,
-          value: null
-      },
-      /**
-       * A string to place in the header to indicate the code type.
-       * @type {String}
-       */
-      codeType: {
-          type: String,
-          value: "Code"
-      }
-  },
-
-  /**
-   * @event hide-code
-   */
-  _hideCode() {
-      this.dispatchEvent(new CustomEvent('hide-code'));
-  }
-});
+customElements.define('kwc-code-display', KwcCodeDisplay);
