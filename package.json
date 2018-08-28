@@ -16,7 +16,7 @@
     "@kano/kwc-style": "^3.0.0-beta.1",
     "@kano/web-components": "^3.0.0-beta.1",
     "@polymer/iron-image": "^3.0.0-pre.18",
-    "@polymer/iron-signals": "^3.0.0-pre.18",
+    "@polymer/iron-signals": "^3.0.0-pre.6",
     "@polymer/marked-element": "^3.0.0-pre.18",
     "@polymer/polymer": "^3.0.0",
     "@polymer/prism-element": "^3.0.0-pre.18"

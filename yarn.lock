@@ -2,20 +2,22 @@
 # yarn lockfile v1
 
 
-"@kano/code@git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.8":
+"@kano/code@git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.120":
   version "3.0.0-beta.1"
-  resolved "git+ssh://git@github.com:KanoComputing/code.git#44d43cc3c07fb04869de9e73c827a3898b7a9e43"
+  resolved "git+ssh://git@github.com:KanoComputing/code.git#a19c3f9a978fc1c79a28a3ccfc666f24ce736e37"
   dependencies:
-    "@kano/kwc-behaviors" "3.0.0-beta.4"
-    "@kano/kwc-blockly" "3.0.0-beta.11"
-    "@kano/kwc-color-picker" "3.0.0-beta.4"
-    "@kano/kwc-color-wheel" "3.0.0-beta.2"
-    "@kano/kwc-file-picker" "3.0.0-beta.2"
-    "@kano/kwc-icons" "3.0.0-beta.2"
-    "@kano/kwc-style" "3.0.0-beta.2"
-    "@kano/polymer-sortablejs" "3.0.0-beta.3"
-    "@kano/web-components" "3.0.0-beta.2"
-    "@kano/x-carousel" "3.0.0-beta.2"
+    "@kano/kwc-behaviors" "^3.0.0-beta.4"
+    "@kano/kwc-blockly" "^3.0.0-beta.22"
+    "@kano/kwc-color-picker" "^3.0.0-beta.6"
+    "@kano/kwc-color-wheel" "^3.0.0-beta.2"
+    "@kano/kwc-file-picker" "^3.0.0-beta.2"
+    "@kano/kwc-icons" "^3.0.0-beta.2"
+    "@kano/kwc-picker" "^0.0.3"
+    "@kano/kwc-style" "^3.0.0-beta.2"
+    "@kano/polymer-sortablejs" "^3.0.0-beta.3"
+    "@kano/telemetry" "^1.0.0"
+    "@kano/web-components" "^3.0.0-beta.2"
+    "@kano/x-carousel" "^3.0.0-beta.2"
     "@polymer/iron-a11y-keys" "^3.0.0-pre.18"
     "@polymer/iron-demo-helpers" "^3.0.0-pre.18"
     "@polymer/iron-flex-layout" "^3.0.0-pre.18"
@@ -48,20 +50,24 @@
     "@polymer/polymer" "^3.0.0"
     "@polymer/prism-element" "^3.0.0-pre.18"
     "@webcomponents/webcomponentsjs" "^2.0.0"
-    challenge-engine "1.0.0"
+    challenge-engine "^1.0.1"
     es6-promise "^4.0.0"
     flow-down "1.0.3"
     gamification-engine "git+ssh://git@github.com:KanoComputing/gamification-engine.git#1.4.0"
     gif.js "git+ssh://git@github.com:jnordberg/gif.js.git"
-    interactjs "1.3.4"
-    js-beautify "1.7.5"
-    kano-shared-storage-client "1.0.0"
-    omggif "1.0.9"
+    interactjs "^1.3.4"
+    js-beautify "^1.7.5"
+    kano-shared-storage-client "^1.0.0"
+    omggif "^1.0.9"
     page "^1.8.6"
     socket.io-client "1.4.8"
     twemoji-min "git+ssh://git@github.com:KanoComputing/twemoji-min.git"
     web-animations-js "^2.3.1"
     whatwg-fetch "^2.0.0"
+
+"@kano/common@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@kano/common/-/common-1.0.2.tgz#84f12d7e924a0b20434bc2d27ee8690b208777a3"
 
 "@kano/es6-resolution@^1.0.6":
   version "1.0.6"
@@ -69,18 +75,18 @@
   dependencies:
     resolve "^1.7.1"
 
-"@kano/kwc-behaviors@3.0.0-beta.4":
+"@kano/kwc-behaviors@^3.0.0-beta.4":
   version "3.0.0-beta.4"
   resolved "https://registry.yarnpkg.com/@kano/kwc-behaviors/-/kwc-behaviors-3.0.0-beta.4.tgz#788d3cb00867d69dd9badc2a9a55a9d3dc64b0f5"
   dependencies:
     blueimp-md5 "^2.10"
     platform "^1.3.5"
 
-"@kano/kwc-blockly@3.0.0-beta.11":
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@kano/kwc-blockly/-/kwc-blockly-3.0.0-beta.11.tgz#5a50e85c2b60bd5298fa0570cf4edb5da9e3ac3d"
+"@kano/kwc-blockly@^3.0.0-beta.22":
+  version "3.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/@kano/kwc-blockly/-/kwc-blockly-3.0.0-beta.22.tgz#380e9ff17ad3871db849b6ff85313355fbc6f731"
   dependencies:
-    "@kano/kwc-color-picker" "^3.0.0-beta.4"
+    "@kano/kwc-color-picker" "^3.0.0-beta.6"
     "@kano/kwc-style" "^3.0.0-beta.2"
     "@polymer/iron-a11y-keys" "^3.0.0-pre.18"
     "@polymer/iron-flex-layout" "^3.0.0-pre.18"
@@ -88,9 +94,9 @@
     "@polymer/paper-styles" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-color-picker@3.0.0-beta.4", "@kano/kwc-color-picker@^3.0.0-beta.4":
-  version "3.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/@kano/kwc-color-picker/-/kwc-color-picker-3.0.0-beta.4.tgz#adb57d42ce76c0983ea4f2bc78c784ce4a4a2780"
+"@kano/kwc-color-picker@^3.0.0-beta.6":
+  version "3.0.0-beta.6"
+  resolved "https://registry.yarnpkg.com/@kano/kwc-color-picker/-/kwc-color-picker-3.0.0-beta.6.tgz#a5360b199b355595cf35b945d88e35333697a5da"
   dependencies:
     "@polymer/iron-flex-layout" "^3.0.0-pre.18"
     "@polymer/iron-icon" "^3.0.0-pre.18"
@@ -98,29 +104,21 @@
     "@polymer/iron-resizable-behavior" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-color-wheel@3.0.0-beta.2":
+"@kano/kwc-color-wheel@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/kwc-color-wheel/-/kwc-color-wheel-3.0.0-beta.2.tgz#f9e3eba612375b3de3b8674ea20f7d5435d67b76"
   dependencies:
     "@polymer/paper-styles" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-file-picker@3.0.0-beta.2":
+"@kano/kwc-file-picker@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/kwc-file-picker/-/kwc-file-picker-3.0.0-beta.2.tgz#218b5cbdc1f99c5066f88438e17667901107a999"
   dependencies:
     "@polymer/iron-list" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-icons@3.0.0-beta.1":
-  version "3.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@kano/kwc-icons/-/kwc-icons-3.0.0-beta.1.tgz#acb1cb6c6ffa482e88241541dba70e819e03b07e"
-  dependencies:
-    "@polymer/iron-icon" "^3.0.0-pre.18"
-    "@polymer/iron-iconset-svg" "^3.0.0-pre.18"
-    "@polymer/polymer" "^3.0.0"
-
-"@kano/kwc-icons@3.0.0-beta.2":
+"@kano/kwc-icons@^3.0.0-beta.1", "@kano/kwc-icons@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/kwc-icons/-/kwc-icons-3.0.0-beta.2.tgz#16348b887dd01f953ae9d797e51e7435cdd4dd47"
   dependencies:
@@ -128,50 +126,41 @@
     "@polymer/iron-iconset-svg" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-style@3.0.0-beta.1", "@kano/kwc-style@^3.0.0-beta.1":
+"@kano/kwc-picker@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@kano/kwc-picker/-/kwc-picker-0.0.3.tgz#5da3809f281dea8216e6b624f82c8590e970fcd6"
+  dependencies:
+    "@kano/kwc-style" "^3.0.0-beta.2"
+    "@polymer/iron-image" "^3.0.0-pre.21"
+    "@polymer/iron-selector" "^3.0.0-pre.21"
+    "@polymer/polymer" "^3.0.0"
+
+"@kano/kwc-style@^3.0.0-beta.1":
   version "3.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/@kano/kwc-style/-/kwc-style-3.0.0-beta.1.tgz#d9e211d4abc1caa25e4f94645c76f30e152732de"
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-style@3.0.0-beta.2", "@kano/kwc-style@^3.0.0-beta.2":
+"@kano/kwc-style@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/kwc-style/-/kwc-style-3.0.0-beta.2.tgz#350947eefe1278658ae138646e961b13290e9057"
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@kano/polymer-sortablejs@3.0.0-beta.3":
+"@kano/polymer-sortablejs@^3.0.0-beta.3":
   version "3.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/@kano/polymer-sortablejs/-/polymer-sortablejs-3.0.0-beta.3.tgz#887a20d4eec05e622c390c1008a8c940e2559ccb"
   dependencies:
     "@polymer/polymer" "^3.0.0"
     sortablejs "^1.7.0"
 
-"@kano/web-components@3.0.0-beta.1":
-  version "3.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@kano/web-components/-/web-components-3.0.0-beta.1.tgz#a38db1363c781060e3e7d0c6a4aaa3c7a73ea688"
+"@kano/telemetry@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@kano/telemetry/-/telemetry-1.0.1.tgz#891f5f190d9750fa4853163fad9605822177a3ac"
   dependencies:
-    "@kano/kwc-style" "^3.0.0-beta.1"
-    "@polymer/app-storage" "^3.0.0-pre.18"
-    "@polymer/iron-component-page" "^3.0.0-pre.18"
-    "@polymer/iron-flex-layout" "^3.0.0-pre.18"
-    "@polymer/iron-icon" "^3.0.0-pre.18"
-    "@polymer/iron-iconset-svg" "^3.0.0-pre.18"
-    "@polymer/iron-image" "^3.0.0-pre.18"
-    "@polymer/iron-list" "^3.0.0-pre.18"
-    "@polymer/iron-media-query" "^3.0.0-pre.18"
-    "@polymer/iron-pages" "^3.0.0-pre.18"
-    "@polymer/iron-scroll-threshold" "^3.0.0-pre.18"
-    "@polymer/paper-button" "^3.0.0-pre.18"
-    "@polymer/paper-dialog" "^3.0.0-pre.18"
-    "@polymer/paper-slider" "^3.0.0-pre.18"
-    "@polymer/paper-spinner" "^3.0.0-pre.18"
-    "@polymer/polymer" "^3.0.0"
-    "@webcomponents/webcomponentsjs" "^2.0.0"
-    blueimp-md5 "^2.10"
-    platform "^1.3.5"
+    "@kano/common" "^1.0.1"
 
-"@kano/web-components@3.0.0-beta.2":
+"@kano/web-components@^3.0.0-beta.1", "@kano/web-components@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/web-components/-/web-components-3.0.0-beta.2.tgz#c0940e35d665d2f751737d059c20e017c3da3b64"
   dependencies:
@@ -195,7 +184,7 @@
     blueimp-md5 "^2.10"
     platform "^1.3.5"
 
-"@kano/x-carousel@3.0.0-beta.2":
+"@kano/x-carousel@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/x-carousel/-/x-carousel-3.0.0-beta.2.tgz#f6eab10913f3057e59a61d29a0a6d937fb63db30"
   dependencies:
@@ -362,6 +351,12 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
+"@polymer/iron-image@^3.0.0-pre.21":
+  version "3.0.0-pre.23"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-image/-/iron-image-3.0.0-pre.23.tgz#d698e3604714992575dc59423793db95914b7791"
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
 "@polymer/iron-input@^3.0.0-pre.19":
   version "3.0.0-pre.19"
   resolved "https://registry.yarnpkg.com/@polymer/iron-input/-/iron-input-3.0.0-pre.19.tgz#4bcac205f927495d775a44e628013bb76ff78706"
@@ -454,7 +449,13 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-signals@^3.0.0-pre.18":
+"@polymer/iron-selector@^3.0.0-pre.21":
+  version "3.0.0-pre.23"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-selector/-/iron-selector-3.0.0-pre.23.tgz#c170c59e09826fca2cb7bce348996c7dc7f1e1a6"
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-signals@^3.0.0-pre.6":
   version "3.0.0-pre.6"
   resolved "https://registry.yarnpkg.com/@polymer/iron-signals/-/iron-signals-3.0.0-pre.6.tgz#d51d799faec2d6f33e7feba985363dbe217b34bb"
   dependencies:
@@ -728,13 +729,27 @@
   version "3.0.0-pre.19"
   resolved "https://registry.yarnpkg.com/@polymer/test-fixture/-/test-fixture-3.0.0-pre.19.tgz#415e16f75da4a242171c5954b6f4443fdca0c4c2"
 
+"@types/commander@^2.11.0":
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/@types/commander/-/commander-2.12.2.tgz#183041a23842d4281478fa5d23c5ca78e6fd08ae"
+  dependencies:
+    commander "*"
+
+"@types/semver@^5.4.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
+
 "@webcomponents/shadycss@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.2.1.tgz#6e4a88534657807c8398b4bc196d0ca492182d54"
 
-"@webcomponents/webcomponentsjs@2.0.0-beta.2", "@webcomponents/webcomponentsjs@^1.0.7", "@webcomponents/webcomponentsjs@^2.0.0":
+"@webcomponents/webcomponentsjs@2.0.0-beta.2", "@webcomponents/webcomponentsjs@^1.0.7":
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.0.0-beta.2.tgz#d9844a0bcfc5feeae94a71f45e33e32b1bd29c19"
+
+"@webcomponents/webcomponentsjs@^2.0.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.1.0.tgz#0300177ce212fbed4c981a61e3a569e6aa1f0c95"
 
 abbrev@1:
   version "1.1.1"
@@ -794,10 +809,6 @@ blob@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.4.tgz#bcf13052ca54463f30f9fc7e95b9a47630a94921"
 
-bluebird@^3.0.5:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
-
 blueimp-md5@^2.10:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/blueimp-md5/-/blueimp-md5-2.10.0.tgz#02f0843921f90dca14f5b8920a38593201d6964d"
@@ -835,9 +846,9 @@ chalk@^1.1.1:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-challenge-engine@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/challenge-engine/-/challenge-engine-1.0.0.tgz#b32fea846d83ad6a237f4255a02075cb692fde30"
+challenge-engine@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/challenge-engine/-/challenge-engine-1.0.1.tgz#94db2aea89ac63499dcec7125b82b3a4a3ea3847"
 
 clipboard@^2.0.0:
   version "2.0.1"
@@ -850,6 +861,10 @@ clipboard@^2.0.0:
 clone@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.1.tgz#d217d1e961118e3ac9a4b8bba3285553bf647cdb"
+
+commander@*, commander@^2.11.0:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
 commander@2.9.0:
   version "2.9.0"
@@ -949,14 +964,15 @@ diff@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
 
-editorconfig@^0.13.2:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.13.3.tgz#e5219e587951d60958fd94ea9a9a008cdeff1b34"
+editorconfig@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.15.0.tgz#b6dd4a0b6b9e76ce48e066bdc15381aebb8804fd"
   dependencies:
-    bluebird "^3.0.5"
-    commander "^2.9.0"
-    lru-cache "^3.2.0"
-    semver "^5.1.0"
+    "@types/commander" "^2.11.0"
+    "@types/semver" "^5.4.0"
+    commander "^2.11.0"
+    lru-cache "^4.1.1"
+    semver "^5.4.1"
     sigmund "^1.0.1"
 
 ee-first@1.1.1:
@@ -1135,7 +1151,7 @@ ini@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
-interactjs@1.3.4:
+interactjs@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/interactjs/-/interactjs-1.3.4.tgz#9d5aa886f8fa03ea2f6c711e688792e3d3bde1ff"
 
@@ -1143,20 +1159,20 @@ isarray@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
 
-js-beautify@1.7.5:
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.7.5.tgz#69d9651ef60dbb649f65527b53674950138a7919"
+js-beautify@^1.7.5:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.8.1.tgz#ba70dd46da48b13c36140253f9471b8bb76bd3ee"
   dependencies:
     config-chain "~1.1.5"
-    editorconfig "^0.13.2"
+    editorconfig "^0.15.0"
     mkdirp "~0.5.0"
-    nopt "~3.0.1"
+    nopt "~4.0.1"
 
 json3@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
 
-kano-shared-storage-client@1.0.0:
+kano-shared-storage-client@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/kano-shared-storage-client/-/kano-shared-storage-client-1.0.0.tgz#94933bd29c2c64fafe54f8b57eac0ade2cec5bef"
   dependencies:
@@ -1217,11 +1233,12 @@ lolex@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/lolex/-/lolex-1.3.2.tgz#7c3da62ffcb30f0f5a80a2566ca24e45d8a01f31"
 
-lru-cache@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-3.2.0.tgz#71789b3b7f5399bec8565dda38aa30d2a097efee"
+lru-cache@^4.1.1:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.3.tgz#a1175cf3496dfc8436c156c334b4955992bce69c"
   dependencies:
-    pseudomap "^1.0.1"
+    pseudomap "^1.0.2"
+    yallist "^2.1.2"
 
 marked@~0.3.9:
   version "0.3.19"
@@ -1280,17 +1297,18 @@ node-text-chunk@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/node-text-chunk/-/node-text-chunk-0.1.1.tgz#d9c672097ce6a93fb9c5d38c332ea1ddcbd831cd"
 
-nopt@~3.0.1:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/nopt/-/nopt-3.0.6.tgz#c6465dbf08abcd4db359317f79ac68a646b28ff9"
+nopt@~4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
   dependencies:
     abbrev "1"
+    osenv "^0.1.4"
 
 object-component@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
 
-omggif@1.0.9:
+omggif@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/omggif/-/omggif-1.0.9.tgz#dcb7024dacd50c52b4d303f04802c91c057c765f"
 
@@ -1309,6 +1327,21 @@ once@^1.3.0:
 options@>=0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
+
+os-homedir@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
+
+os-tmpdir@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
+
+osenv@^0.1.4:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/osenv/-/osenv-0.1.5.tgz#85cdfafaeb28e8677f416e287592b5f3f49ea410"
+  dependencies:
+    os-homedir "^1.0.0"
+    os-tmpdir "^1.0.0"
 
 page@^1.8.6:
   version "1.8.6"
@@ -1366,7 +1399,7 @@ proto-list@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
 
-pseudomap@^1.0.1:
+pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
@@ -1388,9 +1421,9 @@ select@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
 
-semver@^5.1.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
+semver@^5.4.1:
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.1.tgz#7dfdd8814bdb7cabc7be0fb1d734cfb66c940477"
 
 send@0.16.2:
   version "0.16.2"
@@ -1578,6 +1611,10 @@ ws@1.0.1:
 xmlhttprequest-ssl@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.5.1.tgz#3b7741fea4a86675976e908d296d4445961faa67"
+
+yallist@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.1.2.tgz#1c11f9218f076089a47dd512f93c6699a6a81d52"
 
 yeast@0.1.2:
   version "0.1.2"
