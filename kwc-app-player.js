@@ -25,10 +25,6 @@ class KwcAppPlayer extends PolymerElement {
                 box-sizing: border-box;
             }
 
-            :host(:not([loaded])) kc-player {
-                opacity: 0;
-            }
-
             .app {
                 display: flex;
                 flex-direction: column;
@@ -38,7 +34,7 @@ class KwcAppPlayer extends PolymerElement {
                 position: relative;
             }
 
-            kc-player:not(.fullscreen) {
+            kc-player:not([fullscreen]) {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -50,7 +46,7 @@ class KwcAppPlayer extends PolymerElement {
 
         </style>
         <div class="app">
-            <kc-player id="player" src="[[_appUrl]]" on-app-ready="_onAppReady" show-toolbar layout="vertical"></kc-player>
+            <kc-player id="player" src="[[_appUrl]]" show-toolbar></kc-player>
         </div>
         <template is="dom-if" if="[[displayCode]]">
             <kwc-code-display code="[[_mdCode]]" lines="[[_lines]]" code-type="Javascript" on-hide-code="_hideCode"></kwc-code-display>
@@ -76,15 +72,6 @@ class KwcAppPlayer extends PolymerElement {
                 value: false
             },
             /**
-             * Boolean flag to indicate whether the app has loaded
-             * @type {Boolean}
-             */
-            loaded: {
-                type: Boolean,
-                value: false,
-                reflectToAttribute: true
-            },
-            /**
              * An array of line numbers for rendering the code display.
              * @type {Array}
              */
@@ -104,10 +91,6 @@ class KwcAppPlayer extends PolymerElement {
             _appUrl: {
                 type: String,
                 value: null
-            },
-            mode: {
-                type: String,
-                value: 'app'
             },
             /**
              * The current share to be played.
@@ -145,14 +128,8 @@ class KwcAppPlayer extends PolymerElement {
      * @param {Object} share Current share data
      */
     _shareChanged(share) {
-        /**
-         * If this component is being used to load a series of shares
-         * in order, and there currently isn't any share data, then we
-         * need to reset the `loaded` status back to `false` to hide the
-         * app player.
-         */
         if (!share) {
-            return this.loaded = false;
+            return;
         }
         const attachment = this.share.attachment_url;
         if (attachment) {
@@ -167,12 +144,6 @@ class KwcAppPlayer extends PolymerElement {
      */
     _hideCode() {
         this.this.dispatchEvent(new CustomEvent('hide-code'));
-    }
-    /**
-     * Toggle the loaded property in order to show the app player.
-     */
-    _onAppReady() {
-        this.loaded = true;
     }
 }
 
