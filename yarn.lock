@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@kano/code@git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.120":
+"@kano/code@git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.122":
   version "3.0.0-beta.1"
-  resolved "git+ssh://git@github.com:KanoComputing/code.git#a19c3f9a978fc1c79a28a3ccfc666f24ce736e37"
+  resolved "git+ssh://git@github.com:KanoComputing/code.git#bb408fc2860dbf4bb62b25e8dbeed8e4604df4d4"
   dependencies:
     "@kano/kwc-behaviors" "^3.0.0-beta.4"
     "@kano/kwc-blockly" "^3.0.0-beta.22"
@@ -118,7 +118,7 @@
     "@polymer/iron-list" "^3.0.0-pre.18"
     "@polymer/polymer" "^3.0.0"
 
-"@kano/kwc-icons@^3.0.0-beta.1", "@kano/kwc-icons@^3.0.0-beta.2":
+"@kano/kwc-icons@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/kwc-icons/-/kwc-icons-3.0.0-beta.2.tgz#16348b887dd01f953ae9d797e51e7435cdd4dd47"
   dependencies:
@@ -160,7 +160,7 @@
   dependencies:
     "@kano/common" "^1.0.1"
 
-"@kano/web-components@^3.0.0-beta.1", "@kano/web-components@^3.0.0-beta.2":
+"@kano/web-components@^3.0.0-beta.2":
   version "3.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@kano/web-components/-/web-components-3.0.0-beta.2.tgz#c0940e35d665d2f751737d059c20e017c3da3b64"
   dependencies:
@@ -743,13 +743,9 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.2.1.tgz#6e4a88534657807c8398b4bc196d0ca492182d54"
 
-"@webcomponents/webcomponentsjs@2.0.0-beta.2", "@webcomponents/webcomponentsjs@^1.0.7":
+"@webcomponents/webcomponentsjs@2.0.0-beta.2", "@webcomponents/webcomponentsjs@^1.0.7", "@webcomponents/webcomponentsjs@^2.0.0":
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.0.0-beta.2.tgz#d9844a0bcfc5feeae94a71f45e33e32b1bd29c19"
-
-"@webcomponents/webcomponentsjs@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.1.0.tgz#0300177ce212fbed4c981a61e3a569e6aa1f0c95"
 
 abbrev@1:
   version "1.1.1"
