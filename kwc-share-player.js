@@ -113,7 +113,21 @@ class KwcSharePlayer extends PolymerElement {
         }
     }
     lazyImport(id) {
-        return import(importsMap[id || 'default']);
+        // Switch to make sure bundler resolve the import
+        switch (id) {
+            case 'app': {
+                return import('./kwc-app-player.js');
+            }
+            case 'art': {
+                return import('./kwc-art-player.js');
+            }
+            case 'music': {
+                return import('./kwc-music-player.js');
+            }
+            default: {
+                return import('./kwc-player.js');
+            }
+        }
     }
     /**
      * Boolean to indicate iron pages which page to display.
