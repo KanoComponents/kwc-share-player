@@ -16,7 +16,7 @@
   "dependencies": {
     "@kano/code": "git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.122",
     "@kano/icons": "^0.0.1-alpha.3",
-    "@kano/kwc-style": "^3.0.0-beta.2",
+    "@kano/styles": "^1.0.0-alpha.0",
     "@polymer/iron-image": "^3.0.0-pre.18",
     "@polymer/iron-signals": "^3.0.0-pre.6",
     "@polymer/marked-element": "^3.0.0-pre.18",

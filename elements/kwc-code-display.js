@@ -4,12 +4,15 @@ import '@polymer/prism-element/prism-highlighter.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import { close } from '@kano/icons/ui.js';
 import { code } from '@kano/icons/social.js';
+import '@kano/styles/typography.js';
+import '@kano/styles/color.js';
 
 class KwcCodeDisplay extends PolymerElement {
     static get template() {
         return html`
         <style>
             :host {
+                font-family: var(--font-body);
                 position: absolute;
                 top:0;
                 right: 0;

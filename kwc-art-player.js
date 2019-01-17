@@ -11,11 +11,9 @@ then delete this comment!
 */
 
 import '@polymer/iron-image/iron-image.js';
-import '@kano/kwc-style/typography.js';
-import '@kano/kwc-style/color.js';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './elements/kwc-code-display.js';
 import './highlight-theme/art.js';
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class KwcArtPlayer extends PolymerElement {
     static get template() {
@@ -40,12 +38,11 @@ class KwcArtPlayer extends PolymerElement {
             }
         </style>
         <div class="player">
-            <iron-image id="image" src="[[share.cover_url]]" sizing="contain" preload fade>
-                        </iron-image>
+            <iron-image id="image" src="[[share.cover_url]]" sizing="contain" preload fade></iron-image>
         </div>
         <template is="dom-if" if="[[displayCode]]">
                 <kwc-code-display code="[[_mdCode]]" lines="[[_lines]]" code-type="[[_computeCodeType(share.app)]]" on-hide-code="_hideCode">
-                                    </kwc-code-display>
+                </kwc-code-display>
         </template>
     `;
     }

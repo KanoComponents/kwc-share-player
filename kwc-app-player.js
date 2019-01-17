@@ -1,5 +1,5 @@
-import '@kano/kwc-style/typography.js';
-import '@kano/kwc-style/color.js';
+import '@kano/styles/typography.js';
+import '@kano/styles/color.js';
 import '@kano/code/app/elements/kc-player/kc-player.js';
 import './elements/kwc-code-display.js';
 import './highlight-theme/app.js';
@@ -17,6 +17,7 @@ class KwcAppPlayer extends PolymerElement {
             :host {
                 display: block;
                 height: 100%;
+                font-family: var(--font-body);
             }
 
             :host * {

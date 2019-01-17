@@ -9,13 +9,6 @@ const appMapping = {
 },
 loadedImports = {};
 
-const importsMap = {
-    app: './kwc-app-player.js',
-    art: './kwc-art-player.js',
-    music: './kwc-music-player.js',
-    default: './kwc-player.js',
-};
-
 class KwcSharePlayer extends PolymerElement {
     static get template() {
         return html`
