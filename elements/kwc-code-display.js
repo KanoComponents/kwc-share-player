@@ -1,8 +1,9 @@
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/marked-element/marked-element.js';
 import '@polymer/prism-element/prism-highlighter.js';
-import '@kano/kwc-icons/kwc-icons.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { close } from '@kano/icons/ui.js';
+import { code } from '@kano/icons/social.js';
 
 class KwcCodeDisplay extends PolymerElement {
     static get template() {
@@ -48,7 +49,10 @@ class KwcCodeDisplay extends PolymerElement {
             }
 
             .code-icon {
-                color: var(--color-azure);
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                fill: var(--color-azure);
                 margin-right: 16px;
                 vertical-align: -25%;
             }
@@ -137,13 +141,11 @@ class KwcCodeDisplay extends PolymerElement {
             <div class="code-contents">
                 <div class="code-header">
                     <h3 class="code-title">
-                        <iron-icon class="code-icon" icon="kwc-social-icons:code">
-                        </iron-icon>
+                        <div class="icon code-icon">${code}</div>
                         [[codeType]]
                     </h3>
                     <button type="button" class="close-button" on-tap="_hideCode">
-                        <iron-icon class="close-button-icon" icon="kwc-ui-icons:close">
-                        </iron-icon>
+                        <div class="icon close-button-icon">${close}</div>
                     </button>
                 </div>
                 <div class="code-main">

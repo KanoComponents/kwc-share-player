@@ -9,12 +9,14 @@
     "type-detect": "1.0.0",
     "@webcomponents/webcomponentsjs": "2.0.0-beta.2"
   },
+  "scripts": {
+    "serve": "es6-server"
+  },
   "main": "kwc-share-player.js",
   "dependencies": {
     "@kano/code": "git+ssh://git@github.com:KanoComputing/code.git#^1.0.0-alpha.122",
-    "@kano/kwc-icons": "^3.0.0-beta.2",
+    "@kano/icons": "^0.0.1-alpha.3",
     "@kano/kwc-style": "^3.0.0-beta.2",
-    "@kano/web-components": "^3.0.0-beta.2",
     "@polymer/iron-image": "^3.0.0-pre.18",
     "@polymer/iron-signals": "^3.0.0-pre.6",
     "@polymer/marked-element": "^3.0.0-pre.18",
@@ -22,16 +24,7 @@
     "@polymer/prism-element": "^3.0.0-pre.18"
   },
   "devDependencies": {
-    "@kano/es6-resolution": "^1.0.6",
-    "@polymer/iron-component-page": "^3.0.0-pre.18",
-    "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "connect": "^3.6.6",
-    "connect-history-api-fallback": "^1.5.0",
-    "connect-livereload": "^0.6.0",
-    "mime": "^2.3.1",
-    "node-text-chunk": "^0.1.1",
-    "serve-static": "^1.13.2",
-    "wct-browser-legacy": "^0.0.1-pre.11"
+    "@kano/es6-server": "^1.0.1",
+    "@webcomponents/webcomponentsjs": "^2.0.0"
   }
 }

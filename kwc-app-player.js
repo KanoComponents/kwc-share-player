@@ -1,7 +1,5 @@
 import '@kano/kwc-style/typography.js';
 import '@kano/kwc-style/color.js';
-import '@kano/kwc-icons/kwc-icons.js';
-import '@kano/web-components/kano-icons/parts.js';
 import '@kano/code/app/elements/kc-player/kc-player.js';
 import './elements/kwc-code-display.js';
 import './highlight-theme/app.js';
