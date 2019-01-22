@@ -6,10 +6,12 @@ import { close } from '@kano/icons/ui.js';
 import { code } from '@kano/icons/social.js';
 import '@kano/styles/typography.js';
 import '@kano/styles/color.js';
+import button from '@kano/styles/button.js';
 
 class KwcCodeDisplay extends PolymerElement {
     static get template() {
         return html`
+        ${button}
         <style>
             :host {
                 font-family: var(--font-body);
@@ -21,7 +23,7 @@ class KwcCodeDisplay extends PolymerElement {
                 @apply --layout-vertical;
                 @apply --layout-center;
                 @apply --layout-start-justified;
-                background-color: rgba(50, 50, 50, 0.8);
+                background-color: var(--color-black);
                 padding: 50px 16px 0 16px;
                 width: 100%;
                 z-index: 100;
@@ -66,25 +68,20 @@ class KwcCodeDisplay extends PolymerElement {
             }
 
             .close-button {
-                -webkit-appearance: none;
-                appearance: none;
-                background-color: var(--color-grey);
-                border: 0;
                 border-radius: 3px;
-                cursor: pointer;
-                padding: 8px;
+                padding: 0px;
+                fill: white;
+                display: flex;
+                padding: 6px;
+                width: 24px;
+                height: 24px;
             }
-
+            .close-button svg {
+                flex: 1;
+            }
             .close-button:focus {
                 outline: 0;
             }
-
-            .close-button-icon {
-                color: white;
-                height: 16px;
-                width: 16px;
-            }
-
             .code-main {
                 @apply --layout-horizontal;
                 @apply --layout-start;
@@ -147,8 +144,8 @@ class KwcCodeDisplay extends PolymerElement {
                         <div class="icon code-icon">${code}</div>
                         [[codeType]]
                     </h3>
-                    <button type="button" class="close-button" on-tap="_hideCode">
-                        <div class="icon close-button-icon">${close}</div>
+                    <button type="button" class="btn secondary close-button" on-tap="_hideCode">
+                        ${close}
                     </button>
                 </div>
                 <div class="code-main">
