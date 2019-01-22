@@ -196,10 +196,10 @@
     "@polymer/polymer" "^3.0.0"
     sortablejs "^1.7.0"
 
-"@kano/styles@^1.0.0-alpha.0":
-  version "1.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@kano/styles/-/styles-1.0.0-alpha.0.tgz#cce594e4938c5bcf49115f6da1b057bce0505c13"
-  integrity sha512-/YYry6/l/Z/tfNAoG2ZkWfnIftLkR/qCG7HRTKXGw8GvZAamRANauEbSFUjpTPX8dKoe7xIfRCP2ZNffswZFLw==
+"@kano/styles@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kano/styles/-/styles-1.0.0.tgz#f7d0ef9338dcc73c72851dc931c79eefd3db9bbf"
+  integrity sha512-Iu9vr3mY3SEZYUjvDNSpPiuvEfF4TbGJAEPkmGTYJ9xATlDDTvZCsogCBkr19LLbzvTGzREXKQgNpFySX4kf9g==
 
 "@kano/telemetry@^1.0.0":
   version "1.0.2"
@@ -837,10 +837,15 @@
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.8.0.tgz#10340b87626f876841033b21b5221c3701252e10"
   integrity sha512-bx0TzeZ11VqYDGLuXfznen8+4u0hADk2dD5RNMFxWL9MM4c5NXCDCgNXgssb4i2zQOos/GGe4tl5AuE0LzJkLA==
 
-"@webcomponents/webcomponentsjs@2.0.0-beta.2", "@webcomponents/webcomponentsjs@^2.0.0":
+"@webcomponents/webcomponentsjs@2.0.0-beta.2":
   version "2.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.0.0-beta.2.tgz#d9844a0bcfc5feeae94a71f45e33e32b1bd29c19"
   integrity sha512-qgt5dRWfMirJwtKiSjdP6I7UjWTMIP/SYBD/M55/KlSSABy7SMkZ4MPES0ict3ddpfAgZ99OLziWAD1klsxVFw==
+
+"@webcomponents/webcomponentsjs@^2.0.0":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.2.4.tgz#b520d586e46517914d9708c2220b263116d5f86a"
+  integrity sha512-YkLxK9Mbw6QK5bNZ67Rarb/yj0gN+Ziy5+2sLjM0lDb3XafM36gXKZXaIBz4zvLA/cYYTdg+l1LlqXeHEcmeiA==
 
 abbrev@1:
   version "1.1.1"
